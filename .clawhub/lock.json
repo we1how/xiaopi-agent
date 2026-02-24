@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "skills": {
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1771592055018
+    },
+    "ddg-web-search": {
+      "version": "1.0.0",
+      "installedAt": 1771592074850
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1771592076322
+    },
+    "markdown-fetch": {
+      "version": "1.0.0",
+      "installedAt": 1771592078264
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1771592084920
+    },
+    "obsidian": {
+      "version": "1.0.0",
+      "installedAt": 1771592086762
+    },
+    "weather": {
+      "version": "1.0.0",
+      "installedAt": 1771592088297
+    },
+    "apple-notes": {
+      "version": "1.0.0",
+      "installedAt": 1771592096900
+    },
+    "apple-reminders": {
+      "version": "1.0.0",
+      "installedAt": 1771592098843
+    },
+    "1password": {
+      "version": "1.0.1",
+      "installedAt": 1771592100793
+    },
+    "trello": {
+      "version": "1.0.0",
+      "installedAt": 1771592102201
+    }
+  }
+}

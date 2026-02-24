@@ -1,0 +1,131 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 OpenClaw: 接管当前任务",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "接管 VS Code 当前项目，读取 .openclaw/handoff.md 并执行其中描述的任务"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧪 OpenClaw: 运行测试",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "在 ${workspaceFolder} 运行完整测试套件，生成覆盖率报告"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📦 OpenClaw: 提交并创建 PR",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "为当前修改创建 commit，推送到 origin，并在 GitHub 创建 PR，PR 标题基于最近的代码变更"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔄 OpenClaw: 格式化+Lint+提交",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "格式化代码、运行 linter、修复可自动修复的问题、然后 git add 和 commit"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📝 OpenClaw: 生成文档",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "分析 ${workspaceFolder} 的代码结构，更新 README.md，生成 API 文档"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔍 OpenClaw: 全局重构",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "读取 .openclaw/refactor-plan.md，在全项目范围内执行重构，运行测试确保不破坏功能"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🌐 OpenClaw: 浏览器验证",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "启动本地开发服务器，在浏览器中打开应用，截图保存到 screenshots/，验证关键 UI 元素"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📊 OpenClaw: 项目健康检查",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "检查项目健康状况：依赖更新、安全漏洞、测试覆盖率、代码复杂度，生成健康报告"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "⚡ OpenClaw: 快速提交",
+      "type": "shell",
+      "command": "openclaw",
+      "args": ["run", "git add -A && git commit -m 'update' && git push"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "openclawCommand",
+      "type": "promptString",
+      "description": "输入要发送给 OpenClaw 的指令",
+      "default": ""
+    }
+  ]
+}
