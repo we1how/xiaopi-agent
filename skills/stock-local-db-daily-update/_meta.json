@@ -1,0 +1,8 @@
+{
+  "id": "stock-local-db-daily-update",
+  "name": "A股本地数据库每日更新",
+  "version": "1.0.0",
+  "description": "每日增量更新 A股本地数据库",
+  "author": "小皮",
+  "tags": ["stock", "database", "daily", "update"]
+}

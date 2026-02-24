@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  stock-db-init:
+    build: .
+    image: stock-db:latest
+    container_name: stock-db-init
+    volumes:
+      - ./data:/data
+      - ~/.openclaw/credentials:/root/.openclaw/credentials:ro
+    environment:
+      - STOCK_DATA_PATH=/data
+    command: python init_stock_db.py --base-path /data
+    # 初始化模式，运行一次即退出
+
+  stock-db-daily:
+    build: .
+    image: stock-db:latest
+    container_name: stock-db-daily
+    volumes:
+      - ./data:/data
+      - ~/.openclaw/credentials:/root/.openclaw/credentials:ro
+    environment:
+      - STOCK_DATA_PATH=/data
+    command: python daily_update.py --base-path /data
+    # 每日更新模式
+
+  # 使用 cron 定时任务（可选）
+  stock-db-cron:
+    build: .
+    image: stock-db:latest
+    container_name: stock-db-cron
+    volumes:
+      - ./data:/data
+      - ~/.openclaw/credentials:/root/.openclaw/credentials:ro
+      - ./cron:/etc/cron.d
+    environment:
+      - STOCK_DATA_PATH=/data
+    command: cron -f
+    # 需要配置 crontab 文件

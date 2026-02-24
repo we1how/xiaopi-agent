@@ -1,0 +1,8 @@
+{
+  "id": "stock-local-db-init",
+  "name": "A股本地数据库初始化",
+  "version": "1.0.0",
+  "description": "首次建立 A股本地数据库，基于 DuckDB + Parquet",
+  "author": "小皮",
+  "tags": ["stock", "database", "akshare", "tushare"]
+}
