@@ -29,16 +29,22 @@ stock-platform/
 
 ```bash
 cd /Users/linweihao/.openclaw/workspace/stock-platform
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ### 2. 启动应用
 
 ```bash
+cd /Users/linweihao/.openclaw/workspace/stock-platform
 streamlit run app.py
 ```
 
 应用将在 http://localhost:8501 启动
+
+或者指定端口：
+```bash
+streamlit run app.py --server.port 8501
+```
 
 ## 使用说明
 

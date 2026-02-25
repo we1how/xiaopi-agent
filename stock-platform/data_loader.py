@@ -26,13 +26,16 @@ class StockDataLoader:
     
     def _init_views(self):
         """初始化视图"""
-        # 日线数据视图 - 支持分区路径
-        daily_path = self.parquet_path / "daily" / "**" / "**" / "*.parquet"
+        # 日线数据视图 - 支持分区路径 (year=*/month=*/data.parquet)
+        daily_path = self.parquet_path / "daily"
         try:
-            self.conn.execute(f"""
-                CREATE OR REPLACE VIEW daily AS
-                SELECT * FROM read_parquet('{daily_path}', hive_partitioning=1)
-            """)
+            if daily_path.exists():
+                # 匹配嵌套分区结构 year=*/month=*/*.parquet
+                daily_glob = str(daily_path / "year=*" / "month=*" / "*.parquet")
+                self.conn.execute(f"""
+                    CREATE OR REPLACE VIEW daily AS
+                    SELECT * FROM read_parquet('{daily_glob}', hive_partitioning=1)
+                """)
         except Exception as e:
             print(f"Warning: daily view creation failed: {e}")
         
