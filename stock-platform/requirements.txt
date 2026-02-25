@@ -1,0 +1,6 @@
+backtesting.py>=0.3.3
+streamlit>=1.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.18.0
+duckdb>=0.9.0
