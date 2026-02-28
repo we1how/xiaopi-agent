@@ -90,4 +90,121 @@
 
 ---
 
+### 2026-02-28 (周末微学习)
+
+**今日学习**：
+- 主题：周末版内容趋势观察（Web搜索暂不可用，基于已有洞察延伸）
+- 来源：内省分析 + 已有数据复盘
+- 核心洞察：
+  - **周末内容消费特点**：深度阅读/长视频消费时长提升，用户更愿意看"有干货"的内容
+  - **发布时机**：周日晚发布"下周预告"类内容效果较好
+  - **内容储备**：工作日时间紧张，周末是内容创作和储备的好时机
+
+**内容灵感**：
+- 选题："量化系统架构演进史"（系列长文，周末深度阅读友好）
+- 形式：图文结合技术架构图
+- 差异化：从0到1的真实踩坑记录，非理论教程
+
+**周末策略思考**：
+- 利用周末时间创作2-3篇高质量内容储备
+- 工作日只需简单发布和互动
+- "批量化创作 + 日程化发布"提高效率
+
+**主动提案**：无新提案（继续推进昨日Build in Public策略）
+
+---
+
+---
+
+## 数据源升级 (2026-02-28)
+
+**🎉 新能力：自动化社交媒体数据采集**
+
+已部署 `social-media-crawler` Skill，每日自动抓取：
+
+### 国内数据源
+| 平台 | 数据类型 | 技术方案 | 更新时间 |
+|------|----------|----------|----------|
+| 小红书 | 热门笔记 | MediaCrawler | 每天 08:30 |
+
+### 国外高质量情报源（信息差优势）
+| 源 | 类型 | 特点 | 信息差价值 |
+|----|------|------|------------|
+| **Hacker News** | 技术热点 | 技术圈风向标 | 比国内早1-3天 |
+| **GitHub Trending** | 开源项目 | 新工具发现 | 比国内早1-2周 |
+| **Arxiv AI** | 学术论文 | 前沿研究 | 比发表早6-12月 |
+
+**数据位置**：
+```
+~/.openclaw/workspace/data/social-media/
+├── xiaohongshu/          # 国内热点
+└── western/              # 国外情报
+    └── intelligence_YYYYMMDD.json
+```
+
+**使用方式**：
+```python
+from pathlib import Path
+import json
+from datetime import datetime
+
+data_dir = Path.home() / ".openclaw/workspace/data/social-media"
+today = datetime.now().strftime("%Y%m%d")
+
+# 国内：小红书热门笔记
+xhs_file = data_dir / f"xiaohongshu/hot_notes_{today}.json"
+if xhs_file.exists():
+    with open(xhs_file) as f:
+        data = json.load(f)
+        top_notes = sorted(data["notes"], 
+                          key=lambda x: int(x.get("liked_count", 0)), 
+                          reverse=True)[:5]
+
+# 国外：Western Tech Intelligence
+western_file = data_dir / f"western/intelligence_{today}.json"
+if western_file.exists():
+    with open(western_file) as f:
+        data = json.load(f)
+        hn_stories = data["sources"]["hackernews"]["items"]
+        gh_repos = data["sources"]["github"]["items"]
+        arxiv_papers = data["sources"]["arxiv"]["items"]
+```
+
+**配置**：
+- 小红书关键词：`config/xiaohongshu.yaml`
+- 国外数据源：`config/western_sources.yaml`
+
+**信息差分析方向**：
+1. 技术趋势：国外热门但国内尚未关注的技术
+2. 产品机会：GitHub新项目，国内可借鉴
+3. 学术前沿：Arxiv最新论文，投资/研究方向
+4. 创业灵感：HN讨论中发现的痛点和需求
+
+---
+
+---
+
+## 国外情报源（信息差优势）
+
+**每日自动获取**：
+```bash
+python scripts/western_intelligence.py
+```
+
+**数据源**：
+- Indie Hackers（独立开发者案例）
+- Hacker News "Show HN"（产品发布）
+- Substack（Newsletter趋势）
+- Reddit r/SaaS
+
+**信息差分析框架**：
+1. **发现**：国外增长案例/策略/工具
+2. **验证**：国内是否有类似需求/土壤
+3. **时机**：国内市场的最佳切入时机
+4. **本土化**：如何适配国内平台（小红书/即刻/公众号）
+
+**数据位置**：`~/.openclaw/workspace/data/agent-intelligence/growthclaw/`
+
+---
+
 _Growth is not a hack, it's a system_ 🎯

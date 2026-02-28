@@ -1,0 +1,78 @@
+{
+  "date": "20260228",
+  "agent": "quant-munger",
+  "sources": {
+    "arxiv": [
+      {
+        "title": "Pools as Portfolios: Observed arbitrage efficiency & LVR analysis of dynamic weight AMMs",
+        "summary": "Dynamic-weight AMMs (aka Temporal Function Market Makers, TFMMs) implement algorithmic asset allocation, analogous to index or smart beta funds, by continuously updating pools' weights. A strategy updates target weights over time, and arbitrageurs trade the pool back toward those weights. This creat...",
+        "url": "http://arxiv.org/abs/2602.22069v1",
+        "published": "2026-02-25",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "A Bayesian approach to out-of-sample network reconstruction",
+        "summary": "Networks underpin systems that range from finance to biology, yet their structure is often only partially observed. Current reconstruction methods typically fit the parameters of a model anew to each snapshot, thus offering no guidance to predict future configurations. Here, we develop a Bayesian ap...",
+        "url": "http://arxiv.org/abs/2602.21869v1",
+        "published": "2026-02-25",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "Bayesian Parametric Portfolio Policies",
+        "summary": "Parametric Portfolio Policies (PPP) estimate optimal portfolio weights directly as functions of observable signals by maximizing expected utility, bypassing the need to model asset returns and covariances. However, PPP ignores policy risk. We show that this is consequential, leading to an overstatem...",
+        "url": "http://arxiv.org/abs/2602.21173v1",
+        "published": "2026-02-24",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "Stochastic Discount Factors with Cross-Asset Spillovers",
+        "summary": "This paper develops a unified framework that links firm-level predictive signals, cross-asset spillovers, and the stochastic discount factor (SDF). Signals and spillovers are jointly estimated by maximizing the Sharpe ratio, yielding an interpretable SDF that both ranks characteristic relevance and ...",
+        "url": "http://arxiv.org/abs/2602.20856v1",
+        "published": "2026-02-24",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "Markets are competitive if and only if P != NP",
+        "summary": "I prove that competitive market outcomes require computational intractability. If P = NP, firms can efficiently solve the collusion detection problem, identifying deviations from cooperative agreements in complex, noisy markets and thereby making collusion sustainable as an equilibrium. If P != NP, ...",
+        "url": "http://arxiv.org/abs/2602.20415v1",
+        "published": "2026-02-23",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "Detecting and Explaining Unlawful Insider Trading: A Shapley Value and Causal Forest Approach to Identifying Key Drivers and Causal Relationships",
+        "summary": "Corporate insiders trade for diverse reasons, often possessing Material Non-Public Information (MNPI). Determining whether specific trades leverage MNPI is a significant challenge due to inherent complexity. This study focuses on two critical objectives: accurately detecting Unlawful Insider Trading...",
+        "url": "http://arxiv.org/abs/2602.19841v1",
+        "published": "2026-02-23",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "VOLatility Archive for Realized Estimates (VOLARE)",
+        "summary": "VOLARE (VOLatility Archive for Realized Estimates - https://volare.unime.it) is an open research infrastructure providing standardized realized volatility and covariance measures constructed from ultra-high-frequency financial data. The platform processes tick-level observations across equities, exc...",
+        "url": "http://arxiv.org/abs/2602.19732v1",
+        "published": "2026-02-23",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "Metaorder modelling and identification from public data",
+        "summary": "Market-order flow in financial markets exhibits long-range correlations. This is a widely known stylised fact of financial markets. A popular hypothesis for this stylised fact comes from the Lillo-Mike-Farmer (LMF) order-splitting theory. However, quantitative tests of this theory have historically ...",
+        "url": "http://arxiv.org/abs/2602.19590v1",
+        "published": "2026-02-23",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "Overreaction as an indicator for momentum in algorithmic trading: A Case of AAPL stocks",
+        "summary": "This paper investigates whether short-term market overreactions can be systematically predicted and monetized as momentum signals using high-frequency emotional information and modern machine learning methods. Focusing on Apple Inc. (AAPL), we construct a comprehensive intraday dataset that combines...",
+        "url": "http://arxiv.org/abs/2602.18912v1",
+        "published": "2026-02-21",
+        "source": "arxiv_qfin"
+      },
+      {
+        "title": "Sub-City Real Estate Price Index Forecasting at Weekly Horizons Using Satellite Radar and News Sentiment",
+        "summary": "Reliable real estate price indicators are typically published at city level and low frequency, limiting their use for neighborhood-scale monitoring and long-horizon planning. We study whether sub-city price indices can be forecasted at weekly frequency by combining physical development signals from ...",
+        "url": "http://arxiv.org/abs/2602.18572v1",
+        "published": "2026-02-20",
+        "source": "arxiv_qfin"
+      }
+    ]
+  }
+}

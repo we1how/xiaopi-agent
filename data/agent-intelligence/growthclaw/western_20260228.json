@@ -1,0 +1,120 @@
+{
+  "date": "20260228",
+  "agent": "growthclaw",
+  "sources": {
+    "indie_hackers": [
+      {
+        "title": "LeadSynth: You don’t have a traffic problem. You’re just invisible when buyers are ready",
+        "url": "https://www.indiehackers.com/product/leadsynthai?post=ooLCHB005EimcMgY1RZj",
+        "source": "indie_hackers"
+      },
+      {
+        "title": "Kintsu.Ai: I built a platform that lets you vibe code your existing WordPress site",
+        "url": "https://www.indiehackers.com/product/leadsynthai?post=ooLCHB005EimcMgY1RZj",
+        "source": "indie_hackers"
+      },
+      {
+        "title": "WebPrepImage: I built a small free tool for preparing web-ready images.",
+        "url": "https://www.indiehackers.com/product/kintsu-ai?post=qJrGBXklkhtUIUDtJ5Mr",
+        "source": "indie_hackers"
+      },
+      {
+        "title": "LeadSynth: Your product isn’t stuck. Your timing is.",
+        "url": "https://www.indiehackers.com/product/webprepimage?post=Xy3M1x4zdMPDJxINewUk",
+        "source": "indie_hackers"
+      },
+      {
+        "title": "HumanPages.ai: When AI Hits the Real World, Humans Step In.",
+        "url": "https://www.indiehackers.com/product/leadsynthai?post=wtvOUHmuTTGNm9CWoBML",
+        "source": "indie_hackers"
+      },
+      {
+        "title": "From broke to $100k MRR in four years",
+        "url": "https://www.indiehackers.com/product/humanpages-ai?post=rYQi7D4A10IrNmRHfYih",
+        "source": "indie_hackers"
+      },
+      {
+        "title": "The hidden metric that decides if your startup grows or stalls",
+        "url": "https://www.indiehackers.com/product/leadsynthai?post=fpgSywoZNaSKfCdHoiAV",
+        "source": "indie_hackers"
+      },
+      {
+        "title": "[BuildInPublic]: We are entering a very important product phase!",
+        "url": "https://www.indiehackers.com/product/leadsynthai?post=fpgSywoZNaSKfCdHoiAV",
+        "source": "indie_hackers"
+      }
+    ],
+    "hn_show": [
+      {
+        "title": "Show HN: This up votes itself",
+        "url": "http://news.ycombinator.com/vote?for=3742902&dir=up&whence=%6e%65%77%65%73%74",
+        "points": 3531,
+        "comments": 82,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: Gemini Pro 3 imagines the HN front page 10 years from now",
+        "url": "https://dosaygo-studio.github.io/hn-front-page-2035/news",
+        "points": 3346,
+        "comments": 965,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: I made an open-source laptop from scratch",
+        "url": "https://www.byran.ee/posts/creation/",
+        "points": 3237,
+        "comments": 323,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: If YouTube had actual channels",
+        "url": "https://ytch.xyz",
+        "points": 2741,
+        "comments": 514,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: A retro video game console I've been working on in my free time",
+        "url": "https://internalregister.github.io/2019/03/14/Homebrew-Console.html",
+        "points": 2690,
+        "comments": 210,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: Redbean – Single-file distributable web server",
+        "url": "https://justine.lol/redbean/index.html",
+        "points": 1998,
+        "comments": 249,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: Non.io, a Reddit-like platform Ive been working on for the last 4 years",
+        "url": "https://non.io",
+        "points": 1943,
+        "comments": 590,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: I may have created a new type of puzzle",
+        "url": "http://www.dogbunnypuzzle.com/",
+        "points": 1859,
+        "comments": 464,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: I 3D scanned the interior of the Great Pyramid at Giza",
+        "url": "https://giza.mused.org/en/guided/266/inside-the-great-pyramid",
+        "points": 1752,
+        "comments": 280,
+        "source": "hn_show"
+      },
+      {
+        "title": "Show HN: Web Design in 4 minutes",
+        "url": "http://jgthms.com/web-design-in-4-minutes/",
+        "points": 1624,
+        "comments": 152,
+        "source": "hn_show"
+      }
+    ]
+  }
+}

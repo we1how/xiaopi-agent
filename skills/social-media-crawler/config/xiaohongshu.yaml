@@ -1,0 +1,31 @@
+# 小红书热门关键词配置
+# 每日会搜索这些关键词获取热门内容
+
+keywords:
+  - 投资
+  - 理财
+  - AI
+  - 人工智能
+  - 科技
+  - 副业
+  - 赚钱
+  - 读书
+  - 成长
+  - 效率
+  - 编程
+  - Python
+  - 量化
+  - 股票
+  - 基金
+
+# 爬取设置
+settings:
+  max_notes_per_keyword: 20  # 每个关键词最多爬取笔记数
+  crawl_comments: false      # 是否爬取评论
+  crawl_second_level: false  # 是否爬取二级评论
+
+# 输出格式
+output:
+  format: json
+  include_images: false
+  save_raw_html: false

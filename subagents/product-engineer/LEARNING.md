@@ -6,6 +6,32 @@
 
 ## 2026年2月
 
+### 2026-02-28 (周末学习)
+
+**今日学习**：
+- 主题：Scrapling 自适应网页抓取框架
+- 来源：GitHub Trending Python
+- 收获：
+  - 自适应解析器：自动学习网站变化并重新定位元素
+  - 内置绕过反爬系统（Cloudflare Turnstile等）
+  - StealthyFetcher/DynamicFetcher 支持无头浏览器抓取
+  - 可扩展的爬虫框架，支持暂停/恢复和代理轮换
+
+**另一个学习**：
+- 主题：PageIndex - Vectorless RAG
+- 来源：GitHub Trending
+- 收获：
+  - 无需向量数据库和chunking的RAG新方法
+  - 基于树结构的文档索引 + LLM推理检索
+  - 模拟人类专家阅读长文档的方式
+  - 提供MCP Server和API集成
+
+**主动提案**：
+- 🎯 发现机会：Scrapling可用于Stock Platform的数据抓取模块
+- 🤝 需要协作：评估PageIndex是否可以集成到现有知识库系统
+
+---
+
 ### 2026-02-25
 
 **今日学习**：
@@ -57,6 +83,31 @@ def load_strategy_from_file(file_path):
 ### 下一步
 - {行动计划}
 ```
+
+---
+
+---
+
+## 国外情报源（信息差优势）
+
+**每日自动获取**：
+```bash
+python scripts/western_intelligence.py
+```
+
+**数据源**：
+- Hacker News（技术圈风向标）
+- GitHub Trending（开源趋势）
+- Product Hunt（新产品发现）
+- Vercel/Stripe Blog（工程文化）
+
+**信息差分析框架**：
+1. **发现**：国外新技术/工具/框架
+2. **验证**：技术成熟度和社区活跃度
+3. **应用**：在项目中试用的场景
+4. **分享**：整理成技术文章/教程
+
+**数据位置**：`~/.openclaw/workspace/data/agent-intelligence/product-engineer/`
 
 ---
 

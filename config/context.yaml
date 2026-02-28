@@ -1,0 +1,46 @@
+# Context Configuration
+# 上下文压缩配置
+
+context_compression:
+  # 是否启用压缩
+  enabled: true
+  
+  # 触发压缩的阈值（消息数量）
+  # 实际tokens估算：假设平均每条消息100 tokens
+  # threshold=20 约等于 2000 tokens
+  # threshold=80 约等于 8000 tokens
+  compression_threshold: 20
+  
+  # 目标压缩比例（保留多少比例的消息）
+  # 0.5 = 保留50%，压缩掉50%
+  # 0.7 = 保留70%，压缩掉30%（轻度压缩）
+  target_compression_ratio: 0.5
+  
+  # 始终保留的最新消息比例
+  # 确保最近的对话历史不会被压缩
+  recent_keep_ratio: 0.2
+  
+  # 是否记录压缩统计
+  log_stats: true
+  
+  # 统计日志文件路径
+  stats_log_path: "logs/context_compression.jsonl"
+  
+  # 重要性评分配置
+  importance_weights:
+    tool_result: 3.0      # 工具调用结果 - 最高优先级
+    user: 2.0             # 用户消息
+    system: 1.5           # 系统消息
+    tool_call: 1.0        # 工具调用
+    assistant: 0.5        # 助手消息
+  
+  # 关键词权重（匹配到关键词时增加的重要性分数）
+  keyword_weights:
+    high: 2.0    # 结论、决定、建议等
+    medium: 1.0  # 完成、成功、结果等
+  
+  # 压缩策略
+  strategy: "selective_retention"  # 选择性保留
+  
+  # 调试模式（输出详细日志）
+  debug: false

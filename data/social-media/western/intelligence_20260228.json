@@ -1,0 +1,286 @@
+{
+  "date": "20260228",
+  "collected_at": "2026-02-28T08:30:19.103360",
+  "sources": {
+    "hackernews": {
+      "count": 15,
+      "items": [
+        {
+          "title": "I am directing the Department of War to designate Anthropic a supply-chain risk",
+          "url": "https://twitter.com/secwar/status/2027507717469049070",
+          "author": "jacobedawson",
+          "points": 708,
+          "comments": 571,
+          "created_at": "2026-02-27T22:31:18Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Court finds Fourth Amendment doesn’t support broad search of protesters’ devices",
+          "url": "https://www.eff.org/deeplinks/2026/02/victory-tenth-circuit-finds-fourth-amendment-doesnt-support-broad-search-0",
+          "author": "hn_acker",
+          "points": 478,
+          "comments": 84,
+          "created_at": "2026-02-27T15:09:04Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Get free Claude max 20x for open-source maintainers",
+          "url": "https://claude.com/contact-sales/claude-for-oss",
+          "author": "zhisme",
+          "points": 411,
+          "comments": 190,
+          "created_at": "2026-02-27T09:08:58Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Leaving Google has actively improved my life",
+          "url": "https://pseudosingleton.com/leaving-google-improved-my-life/",
+          "author": "speckx",
+          "points": 373,
+          "comments": 208,
+          "created_at": "2026-02-27T19:08:25Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "A better streams API is possible for JavaScript",
+          "url": "https://blog.cloudflare.com/a-better-web-streams-api/",
+          "author": "nnx",
+          "points": 361,
+          "comments": 118,
+          "created_at": "2026-02-27T14:02:53Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "OpenAI raises $110B on $730B pre-money valuation",
+          "url": "https://techcrunch.com/2026/02/27/openai-raises-110b-in-one-of-the-largest-private-funding-rounds-in-history/",
+          "author": "zlatkov",
+          "points": 339,
+          "comments": 437,
+          "created_at": "2026-02-27T14:56:05Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "A new California law says all operating systems need to have age verification",
+          "url": "https://www.pcgamer.com/software/operating-systems/a-new-california-law-says-all-operating-systems-including-linux-need-to-have-some-form-of-age-verification-at-account-setup/",
+          "author": "WalterSobchak",
+          "points": 303,
+          "comments": 309,
+          "created_at": "2026-02-27T14:55:49Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Can you reverse engineer our neural network?",
+          "url": "https://blog.janestreet.com/can-you-reverse-engineer-our-neural-network/",
+          "author": "jsomers",
+          "points": 257,
+          "comments": 181,
+          "created_at": "2026-02-25T02:20:13Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Rob Grant, creator of Red Dwarf, has died",
+          "url": "https://www.beyondthejoke.co.uk/content/17193/red-dwarf-rob-grant",
+          "author": "nephihaha",
+          "points": 210,
+          "comments": 65,
+          "created_at": "2026-02-27T19:26:38Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "NASA announces overhaul of Artemis program amid safety concerns, delays",
+          "url": "https://www.cbsnews.com/news/nasa-artemis-moon-program-overhaul/",
+          "author": "voxadam",
+          "points": 197,
+          "comments": 198,
+          "created_at": "2026-02-27T16:33:39Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "We gave terabytes of CI logs to an LLM",
+          "url": "https://www.mendral.com/blog/llms-are-good-at-sql",
+          "author": "shad42",
+          "points": 159,
+          "comments": 88,
+          "created_at": "2026-02-27T15:41:13Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Open source calculator firmware DB48X forbids CA/CO use due to age verification",
+          "url": "https://github.com/c3d/db48x/commit/7819972b641ac808d46c54d3f5d1df70d706d286",
+          "author": "iamnothere",
+          "points": 129,
+          "comments": 57,
+          "created_at": "2026-02-27T15:37:53Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Implementing a Z80 / ZX Spectrum emulator with Claude Code",
+          "url": "https://antirez.com/news/160",
+          "author": "antirez",
+          "points": 120,
+          "comments": 58,
+          "created_at": "2026-02-25T10:36:43Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Allocating on the Stack",
+          "url": "https://go.dev/blog/allocation-optimizations",
+          "author": "spacey",
+          "points": 113,
+          "comments": 46,
+          "created_at": "2026-02-27T16:34:05Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "A Chinese official’s use of ChatGPT revealed an intimidation operation",
+          "url": "https://www.cnn.com/2026/02/25/politics/chatgpt-china-intimidation-operation",
+          "author": "cwwc",
+          "points": 109,
+          "comments": 82,
+          "created_at": "2026-02-27T15:52:27Z",
+          "source": "hackernews"
+        }
+      ]
+    },
+    "github": {
+      "count": 10,
+      "items": [
+        {
+          "name": "ruvnet/wifi-densepose",
+          "url": "https://github.com/ruvnet/wifi-densepose",
+          "description": "Production-ready implementation of InvisPose - a revolutionary WiFi-based dense human pose estimatio",
+          "source": "github"
+        },
+        {
+          "name": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+          "url": "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering",
+          "description": "A comprehensive collection of Agent Skills for context engineering, multi-agent architectures, and p",
+          "source": "github"
+        },
+        {
+          "name": "datawhalechina/hello-agents",
+          "url": "https://github.com/datawhalechina/hello-agents",
+          "description": "📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程",
+          "source": "github"
+        },
+        {
+          "name": "D4Vinci/Scrapling",
+          "url": "https://github.com/D4Vinci/Scrapling",
+          "description": "🕷️ An adaptive Web Scraping framework that handles everything from a single request to a full-scale ",
+          "source": "github"
+        },
+        {
+          "name": "alibaba/OpenSandbox",
+          "url": "https://github.com/alibaba/OpenSandbox",
+          "description": "OpenSandbox is a general-purpose sandbox platform for AI applications, offering multi-language SDKs,",
+          "source": "github"
+        },
+        {
+          "name": "hiyouga/LlamaFactory",
+          "url": "https://github.com/hiyouga/LlamaFactory",
+          "description": "Unified Efficient Fine-Tuning of 100+ LLMs &amp; VLMs (ACL 2024)",
+          "source": "github"
+        },
+        {
+          "name": "bytedance/trae-agent",
+          "url": "https://github.com/bytedance/trae-agent",
+          "description": "Trae Agent is an LLM-based agent for general purpose software engineering tasks.",
+          "source": "github"
+        },
+        {
+          "name": "anthropics/skills",
+          "url": "https://github.com/anthropics/skills",
+          "description": "Public repository for Agent Skills",
+          "source": "github"
+        },
+        {
+          "name": "modelscope/ms-swift",
+          "url": "https://github.com/modelscope/ms-swift",
+          "description": "Use PEFT or Full-parameter to CPT/SFT/DPO/GRPO 600+ LLMs (Qwen3.5, DeepSeek-R1, GLM4.5, InternLM3, L",
+          "source": "github"
+        },
+        {
+          "name": "4thfever/cultivation-world-simulator",
+          "url": "https://github.com/4thfever/cultivation-world-simulator",
+          "description": "基于 AI Agent 工作流的修仙世界模拟器，旨在还原智能、开放的仙侠世界。| An open-source Cultivation World Simulator using Agentic Wo",
+          "source": "github"
+        }
+      ]
+    },
+    "arxiv": {
+      "count": 10,
+      "items": [
+        {
+          "title": "Model Agreement via Anchoring",
+          "summary": "Numerous lines of aim to control $\\textit{model disagreement}$ -- the extent to which two machine learning models disagree in their predictions. We adopt a simple and standard notion of model disagree...",
+          "url": "https://arxiv.org/abs/2602.23360v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "SeeThrough3D: Occlusion Aware 3D Control in Text-to-Image Generation",
+          "summary": "We identify occlusion reasoning as a fundamental yet overlooked aspect for 3D layout-conditioned generation. It is essential for synthesizing partially occluded objects with depth-consistent geometry ...",
+          "url": "https://arxiv.org/abs/2602.23359v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "SOTAlign: Semi-Supervised Alignment of Unimodal Vision and Language Models via Optimal Transport",
+          "summary": "The Platonic Representation Hypothesis posits that neural networks trained on different modalities converge toward a shared statistical model of the world. Recent work exploits this convergence by ali...",
+          "url": "https://arxiv.org/abs/2602.23353v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "FlashOptim: Optimizers for Memory Efficient Training",
+          "summary": "Standard mixed-precision training of neural networks requires many bytes of accelerator memory for each model parameter. These bytes reflect not just the parameter itself, but also its gradient and on...",
+          "url": "https://arxiv.org/abs/2602.23349v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "Understanding Usage and Engagement in AI-Powered Scientific Research Tools: The Asta Interaction Dataset",
+          "summary": "AI-powered scientific research tools are rapidly being integrated into research workflows, yet the field lacks a clear lens into how researchers use these systems in real-world settings. We present an...",
+          "url": "https://arxiv.org/abs/2602.23335v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "Bitwise Systolic Array Architecture for Runtime-Reconfigurable Multi-precision Quantized Multiplication on Hardware Accelerators",
+          "summary": "Neural network accelerators have been widely applied to edge devices for complex tasks like object tracking, image recognition, etc. Previous works have explored the quantization technologies in relat...",
+          "url": "https://arxiv.org/abs/2602.23334v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "Utilizing LLMs for Industrial Process Automation",
+          "summary": "A growing number of publications address the best practices to use Large Language Models (LLMs) for software engineering in recent years. However, most of this work focuses on widely-used general purp...",
+          "url": "https://arxiv.org/abs/2602.23331v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "Toward Expert Investment Teams:A Multi-Agent LLM System with Fine-Grained Trading Tasks",
+          "summary": "The advancement of large language models (LLMs) has accelerated the development of autonomous financial trading systems. While mainstream approaches deploy multi-agent systems mimicking analyst and ma...",
+          "url": "https://arxiv.org/abs/2602.23330v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "LLM Novice Uplift on Dual-Use, In Silico Biology Tasks",
+          "summary": "Large language models (LLMs) perform increasingly well on biology benchmarks, but it remains unclear whether they uplift novice users -- i.e., enable humans to perform better than with internet-only r...",
+          "url": "https://arxiv.org/abs/2602.23329v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        },
+        {
+          "title": "Generalized Rapid Action Value Estimation in Memory-Constrained Environments",
+          "summary": "Generalized Rapid Action Value Estimation (GRAVE) has been shown to be a strong variant within the Monte-Carlo Tree Search (MCTS) family of algorithms for General Game Playing (GGP). However, its reli...",
+          "url": "https://arxiv.org/abs/2602.23318v1",
+          "published": "2026-02-26",
+          "source": "arxiv"
+        }
+      ]
+    }
+  }
+}

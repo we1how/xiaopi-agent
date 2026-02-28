@@ -1,0 +1,39 @@
+# Western Tech Intelligence - 国外科技情报源配置
+
+# Hacker News
+# 特点：技术圈最权威的风向标，评论区质量极高
+hackernews:
+  enabled: true
+  api_url: "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=15"
+  categories:
+    - technology
+    - ai
+    - startups
+
+# GitHub Trending
+# 特点：开源技术风向标，发现新工具、新框架
+github:
+  enabled: true
+  languages:
+    - python
+    - typescript
+    - rust
+    - go
+
+# Arxiv AI Papers
+# 特点：前沿学术论文，比正式发表早6-12个月
+arxiv:
+  enabled: true
+  categories:
+    - cs.AI        # 人工智能
+    - cs.CL        # 计算语言学(NLP)
+    - cs.LG        # 机器学习
+    - cs.CV        # 计算机视觉
+    - q-fin.ST     # 量化金融
+  max_results: 10
+
+# 信息差分析方向
+# 1. 技术趋势：国外热门但国内尚未关注的技术
+# 2. 产品机会：GitHub新项目，国内可借鉴
+# 3. 学术前沿：Arxiv最新论文，投资/研究方向
+# 4. 创业灵感：HN讨论中发现的痛点和需求

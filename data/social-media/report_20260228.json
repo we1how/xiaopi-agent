@@ -1,0 +1,11 @@
+{
+  "date": "2026-02-28T08:30:22.614441",
+  "summary": {
+    "xiaohongshu": {
+      "status": "success",
+      "notes_count": 10
+    },
+    "twitter": "success"
+  },
+  "output_dir": "/Users/linweihao/.openclaw/workspace/data/social-media"
+}

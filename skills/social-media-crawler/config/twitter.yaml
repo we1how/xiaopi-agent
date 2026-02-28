@@ -1,0 +1,27 @@
+# Twitter/X 趋势话题配置
+
+# 关注的趋势类别
+trending_categories:
+  - technology
+  - business
+  - finance
+  - ai
+
+# 搜索关键词
+search_keywords:
+  - "#AI"
+  - "#Python"
+  - "#Investment"
+  - "#Startup"
+  - "OpenAI"
+  - "Claude"
+
+# 爬取设置
+settings:
+  max_tweets_per_query: 50
+  include_retweets: false
+  lang: "en"
+
+# 输出格式
+output:
+  format: json
