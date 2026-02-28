@@ -96,4 +96,52 @@ python scripts/western_intelligence.py
 
 ---
 
+## 论文研读：多智能体 LLM 交易系统
+
+> 论文：Toward Expert Investment Teams: A Multi-Agent LLM System with Fine-Grained Trading Tasks
+> 研读日期：2026-02-28
+
+### 核心启示
+
+**1. 细粒度任务设计 > 粗粒度角色**
+- 当前："分析这只股票"（抽象，信号丢失）
+- 升级：具体指标计算（RoC, Bollinger Z-score, 归一化 MACD）
+
+**2. 三级架构设计**
+```
+Level 1: 分析师层 (Technical/Quant/Qualitative/News)
+    ↓
+Level 2: 调整层 (Sector + Macro)
+    ↓
+Level 3: 决策层 (Portfolio Manager)
+```
+
+**3. 关键技术指标**
+| 指标 | 计算 | 用途 |
+|------|------|------|
+| 归一化 MACD | (EMA₁₂ - EMA₂₆) / Pₜ | 跨标的可比性 |
+| Bollinger Z-score | (Pₜ - μ₂₀) / σ₂₀ | 波动率评估 |
+| KDJ | J = 3D - 2K | 超买超卖 |
+
+**4. 工程要点**
+- Temperature = 1 + 中位数聚合（50次试验）
+- 严格数据隔离（防止 lookahead bias）
+- 单边 10bps 交易成本扣除
+
+### 行动计划
+
+**本周**：
+- [ ] 实现归一化 MACD
+- [ ] 添加 Bollinger Z-score
+- [ ] 设计细粒度任务模板
+
+**本月**：
+- [ ] 重构为三级架构
+- [ ] 多 Agent 评分聚合
+- [ ] 回测验证
+
+**详细笔记**：`research/llm_trading_system_paper_notes.md`
+
+---
+
 _持续记录，复利成长_ 📊
