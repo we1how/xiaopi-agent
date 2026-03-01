@@ -61,19 +61,25 @@ class BacktestEngine:
         
         self.results = None
         self.stats = None
+        self.strategy_instance = None  # 保存策略实例以访问决策历史
     
     def run(self, **strategy_params) -> Dict[str, Any]:
         """
         运行回测
-        
+
         Args:
             **strategy_params: 策略参数
-        
+
         Returns:
             回测结果字典
         """
         try:
             self.stats = self.bt.run(**strategy_params)
+
+            # 保存策略实例（用于V2策略访问决策历史）
+            # backtesting.py 将策略实例存储在 stats._strategy
+            if hasattr(self.stats, '_strategy'):
+                self.strategy_instance = self.stats._strategy
             
             # 转换为字典格式
             results = {

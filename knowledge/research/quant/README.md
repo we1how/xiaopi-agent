@@ -10,6 +10,7 @@
 
 | 文件 | 内容 | 状态 |
 |------|------|------|
+| [key_insights_summary.md](./key_insights_summary.md) | ⭐ 关键思想提炼（学习用） | ✅ 已整理 |
 | [llm_trading_system_paper_notes.md](./llm_trading_system_paper_notes.md) | 论文核心洞察与行动计划 | ✅ 已整理 |
 | [multi_agent_trading_sop_v1.md](./multi_agent_trading_sop_v1.md) | 完整实施手册与SOP | ✅ 已整理 |
 
@@ -18,6 +19,7 @@
 - **来源**: arXiv:2602.23330
 - **研读日期**: 2026-02-28
 - **核心贡献者**: 老板（阅读+总结）
+- **当前状态**: 🔍 学习阶段，暂不开发
 
 **核心洞察**：
 1. **细粒度任务设计** > 粗粒度角色定义

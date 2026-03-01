@@ -19,7 +19,13 @@ import inspect
 # 导入本地模块
 from data_loader import StockDataLoader
 from backtest_engine import BacktestEngine, run_backtest
-from strategies import SmaCross, RsiStrategy, MacdStrategy
+from strategies import (
+    SmaCross, RsiStrategy, MacdStrategy,
+    SmaCrossV2, SmaCrossV2Aggressive, SmaCrossV2Conservative,
+    OversoldBounceStrategy, OversoldBounceConservative, OversoldBounceAggressive
+)
+from signals import SignalExtractor, TechnicalSignals
+from scanners import OversoldScanner
 
 # 页面配置
 st.set_page_config(
@@ -61,6 +67,10 @@ def init_session_state():
         st.session_state.data_loader = StockDataLoader()
     if 'backtest_results' not in st.session_state:
         st.session_state.backtest_results = None
+    if 'oversold_scan_results' not in st.session_state:
+        st.session_state.oversold_scan_results = None
+    if 'oversold_scanner' not in st.session_state:
+        st.session_state.oversold_scanner = None
 
 
 def load_strategy_from_file(file_path: str) -> type:
@@ -123,33 +133,66 @@ def render_sidebar():
     strategy_file = None
     
     if strategy_option == "内置策略":
-        strategy_name = st.sidebar.selectbox(
-            "选择内置策略",
-            ["SmaCross (双均线)", "RsiStrategy (RSI)", "MacdStrategy (MACD)"]
+        # 添加策略版本选择
+        strategy_version = st.sidebar.radio(
+            "策略版本",
+            ["原版 (V1)", "细粒度版 (V2 - 带信号面板)"]
         )
-        
-        if strategy_name.startswith("SmaCross"):
-            strategy_class = SmaCross
+
+        if strategy_version == "原版 (V1)":
+            strategy_name = st.sidebar.selectbox(
+                "选择内置策略",
+                ["SmaCross (双均线)", "RsiStrategy (RSI)", "MacdStrategy (MACD)"]
+            )
+
+            if strategy_name.startswith("SmaCross"):
+                strategy_class = SmaCross
+                st.sidebar.subheader("策略参数")
+                n_short = st.sidebar.slider("短期均线", 5, 50, 10)
+                n_long = st.sidebar.slider("长期均线", 10, 100, 20)
+                strategy_params = {"n_short": n_short, "n_long": n_long}
+
+            elif strategy_name.startswith("RsiStrategy"):
+                strategy_class = RsiStrategy
+                st.sidebar.subheader("策略参数")
+                period = st.sidebar.slider("RSI周期", 5, 30, 14)
+                oversold = st.sidebar.slider("超卖阈值", 10, 40, 30)
+                overbought = st.sidebar.slider("超买阈值", 60, 90, 70)
+                strategy_params = {"period": period, "oversold": oversold, "overbought": overbought}
+
+            else:  # MACD
+                strategy_class = MacdStrategy
+                st.sidebar.subheader("策略参数")
+                fast = st.sidebar.slider("快线周期", 5, 20, 12)
+                slow = st.sidebar.slider("慢线周期", 20, 50, 26)
+                signal = st.sidebar.slider("信号线周期", 5, 15, 9)
+                strategy_params = {"fast": fast, "slow": slow, "signal": signal}
+
+        else:  # V2 细粒度策略
+            strategy_name = st.sidebar.selectbox(
+                "选择V2策略",
+                ["SmaCrossV2 (标准版)", "SmaCrossV2Aggressive (激进版)", "SmaCrossV2Conservative (保守版)"]
+            )
+
+            if strategy_name.startswith("SmaCrossV2 (标准版)"):
+                strategy_class = SmaCrossV2
+            elif strategy_name.startswith("SmaCrossV2Aggressive"):
+                strategy_class = SmaCrossV2Aggressive
+            else:
+                strategy_class = SmaCrossV2Conservative
+
             st.sidebar.subheader("策略参数")
             n_short = st.sidebar.slider("短期均线", 5, 50, 10)
             n_long = st.sidebar.slider("长期均线", 10, 100, 20)
-            strategy_params = {"n_short": n_short, "n_long": n_long}
-            
-        elif strategy_name.startswith("RsiStrategy"):
-            strategy_class = RsiStrategy
-            st.sidebar.subheader("策略参数")
-            period = st.sidebar.slider("RSI周期", 5, 30, 14)
-            oversold = st.sidebar.slider("超卖阈值", 10, 40, 30)
-            overbought = st.sidebar.slider("超买阈值", 60, 90, 70)
-            strategy_params = {"period": period, "oversold": oversold, "overbought": overbought}
-            
-        else:  # MACD
-            strategy_class = MacdStrategy
-            st.sidebar.subheader("策略参数")
-            fast = st.sidebar.slider("快线周期", 5, 20, 12)
-            slow = st.sidebar.slider("慢线周期", 20, 50, 26)
-            signal = st.sidebar.slider("信号线周期", 5, 15, 9)
-            strategy_params = {"fast": fast, "slow": slow, "signal": signal}
+            trend_filter = st.sidebar.checkbox("启用趋势过滤", value=True)
+            min_trend = st.sidebar.slider("最小趋势强度", 0.0, 1.0, 0.3)
+
+            strategy_params = {
+                "n_short": n_short,
+                "n_long": n_long,
+                "trend_filter": trend_filter,
+                "min_trend_strength": min_trend
+            }
             
     else:  # 上传策略文件
         strategy_file = st.sidebar.file_uploader(
@@ -385,82 +428,582 @@ def render_trades_table(results: dict):
 def render_data_info(data: pd.DataFrame, stock_code: str):
     """渲染数据信息"""
     st.subheader("📋 数据概览")
-    
+
     col1, col2, col3 = st.columns(3)
-    
+
     with col1:
         st.info(f"**股票代码**: {stock_code}")
     with col2:
         st.info(f"**数据条数**: {len(data)}")
     with col3:
         st.info(f"**日期范围**: {data.index[0].strftime('%Y-%m-%d')} ~ {data.index[-1].strftime('%Y-%m-%d')}")
-    
+
     # 显示数据预览
     with st.expander("查看数据预览"):
         st.dataframe(data.head(20), use_container_width=True)
 
 
-def main():
-    """主函数"""
-    init_session_state()
-    render_header()
-    
-    # 获取侧边栏参数
-    params = render_sidebar()
-    
-    # 加载数据
-    try:
-        with st.spinner("📥 正在加载数据..."):
-            data = st.session_state.data_loader.get_stock_data(
-                params['stock_code'],
-                params['start_date'].strftime('%Y-%m-%d'),
-                params['end_date'].strftime('%Y-%m-%d')
+def render_signal_panel(data: pd.DataFrame):
+    """
+    渲染信号面板 - 显示标准化技术指标
+
+    这是V2架构的核心：细粒度信号展示
+    """
+    st.subheader("📊 技术指标信号 (标准化)")
+
+    # 提取信号
+    extractor = SignalExtractor()
+    signals = extractor.extract(data)
+
+    # 使用列布局展示指标
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.markdown("**动量指标 (RoC)**")
+        roc_5_color = "🔴" if signals.roc_5d > 0 else "🟢"
+        roc_10_color = "🔴" if signals.roc_10d > 0 else "🟢"
+        roc_20_color = "🔴" if signals.roc_20d > 0 else "🟢"
+
+        st.metric("5日变动率", f"{roc_5_color} {signals.roc_5d:+.2%}")
+        st.metric("10日变动率", f"{roc_10_color} {signals.roc_10d:+.2%}")
+        st.metric("20日变动率", f"{roc_20_color} {signals.roc_20d:+.2%}")
+
+    with col2:
+        st.markdown("**位置指标 (Z-score)**")
+        bb_status = "超卖" if signals.bollinger_z < -2 else "超买" if signals.bollinger_z > 2 else "中性"
+        st.metric("布林带Z-score", f"{signals.bollinger_z:+.2f} ({bb_status})")
+        st.metric("价格Z-score", f"{signals.price_z:+.2f}")
+        st.metric("成交量Z-score", f"{signals.volume_z:+.2f}")
+
+    with col3:
+        st.markdown("**趋势指标**")
+        trend_dir = "📈 上升" if signals.trend_direction > 0 else "📉 下降" if signals.trend_direction < 0 else "➡️ 震荡"
+        st.metric("趋势方向", trend_dir)
+        st.metric("趋势强度", f"{signals.trend_strength:.1%}")
+
+        rsi_status = "超卖" if signals.rsi < 30 else "超买" if signals.rsi > 70 else "中性"
+        rsi_color = "🟢" if signals.rsi < 30 else "🔴" if signals.rsi > 70 else "⚪"
+        st.metric("RSI", f"{rsi_color} {signals.rsi:.1f} ({rsi_status})")
+
+    # 第二行指标
+    col4, col5, col6 = st.columns(3)
+
+    with col4:
+        st.markdown("**波动率**")
+        st.metric("20日波动率", f"{signals.volatility_20d:.2%}")
+        st.metric("ATR(14)/价格", f"{signals.atr_14d:.2%}")
+
+    with col5:
+        st.markdown("**MACD (归一化)**")
+        macd_color = "🔴" if signals.macd_normalized > 0 else "🟢"
+        st.metric("MACD", f"{macd_color} {signals.macd_normalized:+.4f}")
+        st.metric("Signal", f"{signals.macd_signal:+.4f}")
+        st.metric("Histogram", f"{signals.macd_histogram:+.4f}")
+
+    with col6:
+        st.markdown("**量价指标**")
+        obv_color = "🔴" if signals.obv_trend > 0 else "🟢"
+        mf_color = "🔴" if signals.money_flow > 0 else "🟢"
+        st.metric("OBV趋势", f"{obv_color} {signals.obv_trend:+.2f}")
+        st.metric("资金流向", f"{mf_color} {signals.money_flow:+.2f}")
+
+        rsi_div_color = "🔴" if signals.rsi_divergence > 0 else "🟢" if signals.rsi_divergence < 0 else "⚪"
+        div_text = "底背离" if signals.rsi_divergence > 10 else "顶背离" if signals.rsi_divergence < -10 else "无"
+        st.metric("RSI背离", f"{rsi_div_color} {signals.rsi_divergence:+.1f} ({div_text})")
+
+    # 综合评分
+    st.markdown("---")
+    col7, col8 = st.columns([1, 3])
+
+    with col7:
+        score = signals.composite_score
+        if score > 0.3:
+            score_color = "🟢"
+            score_text = "看多"
+        elif score < -0.3:
+            score_color = "🔴"
+            score_text = "看空"
+        else:
+            score_color = "⚪"
+            score_text = "中性"
+
+        st.metric("综合评分", f"{score_color} {score:+.2f}", delta=score_text)
+
+    with col8:
+        # 信号说明
+        st.info(f"""
+        **信号解读**：
+        - 综合评分基于动量(30%) + 位置(20%) + 趋势(25%) + RSI(15%) + 量价(10%)加权计算
+        - 评分范围 -1(看空) 到 +1(看多)，当前 **{score:+.2f}** 表示 **{score_text}**
+        - 所有指标已归一化，支持跨标的比较
+        """)
+
+    # 显示原始数据（折叠）
+    with st.expander("📋 查看完整信号数据"):
+        signal_dict = signals.to_dict()
+        df_signals = pd.DataFrame([signal_dict]).T
+        df_signals.columns = ['数值']
+        df_signals['解读'] = df_signals['数值'].apply(lambda x: f"{x:.4f}")
+        st.dataframe(df_signals, use_container_width=True)
+
+
+def render_decision_history(engine):
+    """
+    渲染V2策略的决策历史
+
+    展示每个交易决策的理由（语义一致性）
+    """
+    # 获取策略实例（V2策略在回测后存储在 strategy_instance）
+    strategy = getattr(engine, 'strategy_instance', None)
+    if strategy is None:
+        return
+
+    # 检查是否是V2策略
+    if not hasattr(strategy, 'get_decision_history'):
+        return
+
+    history = strategy.get_decision_history()
+
+    if history.empty:
+        return
+
+    st.subheader("📝 决策历史 (V2细粒度)")
+
+    # 只显示交易相关的决策
+    trade_decisions = history[history['action'].isin(['buy', 'sell'])]
+
+    if trade_decisions.empty:
+        st.info("本回测期间没有交易决策")
+        return
+
+    # 格式化显示
+    display_df = trade_decisions[['action', 'reason', 'confidence']].copy()
+    display_df['操作'] = display_df['action'].map({
+        'buy': '🟢 买入',
+        'sell': '🔴 卖出'
+    })
+    display_df['置信度'] = display_df['confidence'].apply(lambda x: f"{x:.1%}")
+    display_df['决策理由'] = display_df['reason']
+
+    st.dataframe(
+        display_df[['操作', '置信度', '决策理由']],
+        use_container_width=True
+    )
+
+    # 显示决策统计
+    with st.expander("📊 决策统计"):
+        stats = strategy.get_signal_summary()
+        if stats:
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric("总决策数", stats['total_decisions'])
+            with col2:
+                st.metric("买入次数", stats['buy_count'])
+            with col3:
+                st.metric("卖出次数", stats['sell_count'])
+
+
+def render_oversold_sidebar():
+    """渲染超跌反弹策略的侧边栏"""
+    st.sidebar.title("⚙️ 参数设置")
+
+    # 策略参数
+    st.sidebar.header("📉 超跌参数")
+
+    drawdown_threshold = st.sidebar.slider(
+        "跌幅阈值",
+        min_value=0.30,
+        max_value=0.60,
+        value=0.40,
+        step=0.05,
+        format="%.0f%%",
+        help="从前高下跌的幅度阈值"
+    )
+
+    lookback_period = st.sidebar.selectbox(
+        "观察周期",
+        options=[90, 120, 150, 180],
+        index=1,
+        help="计算跌幅的时间窗口"
+    )
+
+    st.sidebar.header("📈 反弹参数")
+
+    bounce_ratio = st.sidebar.slider(
+        "买入反弹比例",
+        min_value=0.10,
+        max_value=0.20,
+        value=0.125,
+        step=0.025,
+        format="%.1f%%",
+        help="从最低点反弹的比例（y/8=12.5%）"
+    )
+
+    pullback_ratio = st.sidebar.slider(
+        "卖出回调比例",
+        min_value=0.05,
+        max_value=0.12,
+        value=0.08,
+        step=0.01,
+        format="%.0f%%",
+        help="从买入点回调的比例（y/12=8%）"
+    )
+
+    st.sidebar.header("🛑 风控参数")
+
+    stop_loss_pct = st.sidebar.slider(
+        "硬止损比例",
+        min_value=0.03,
+        max_value=0.08,
+        value=0.05,
+        step=0.01,
+        format="%.0f%%",
+        help="跌破前低的止损比例"
+    )
+
+    enable_volume_filter = st.sidebar.checkbox(
+        "启用成交量过滤",
+        value=True,
+        help="超跌股通常伴随成交量萎缩"
+    )
+
+    volume_contraction = st.sidebar.slider(
+        "成交量萎缩阈值",
+        min_value=0.50,
+        max_value=0.90,
+        value=0.70,
+        step=0.05,
+        format="%.0f%%",
+        help="20日均量/60日均量的阈值",
+        disabled=not enable_volume_filter
+    )
+
+    # 策略风格选择
+    st.sidebar.header("🎯 策略风格")
+
+    strategy_style = st.sidebar.radio(
+        "选择风格",
+        ["标准版", "保守版", "激进版"]
+    )
+
+    if strategy_style == "标准版":
+        strategy_class = OversoldBounceStrategy
+    elif strategy_style == "保守版":
+        strategy_class = OversoldBounceConservative
+    else:
+        strategy_class = OversoldBounceAggressive
+
+    # 回测设置
+    st.sidebar.header("💰 回测设置")
+
+    initial_cash = st.sidebar.number_input(
+        "初始资金",
+        min_value=10000,
+        max_value=10000000,
+        value=100000,
+        step=10000
+    )
+
+    commission = st.sidebar.slider(
+        "手续费率",
+        min_value=0.0,
+        max_value=0.01,
+        value=0.001,
+        step=0.0001,
+        format="%.4f"
+    )
+
+    # 扫描按钮
+    st.sidebar.markdown("---")
+    scan_button = st.sidebar.button("🔍 开始扫描", use_container_width=True)
+
+    return {
+        'drawdown_threshold': drawdown_threshold,
+        'lookback_period': lookback_period,
+        'bounce_ratio': bounce_ratio,
+        'pullback_ratio': pullback_ratio,
+        'stop_loss_pct': stop_loss_pct,
+        'enable_volume_filter': enable_volume_filter,
+        'volume_contraction': volume_contraction,
+        'strategy_class': strategy_class,
+        'strategy_style': strategy_style,
+        'initial_cash': initial_cash,
+        'commission': commission,
+        'scan_button': scan_button
+    }
+
+
+def render_oversold_page(params: dict):
+    """渲染超跌反弹策略页面"""
+    st.markdown('<p class="main-header">📉 超跌反弹策略</p>', unsafe_allow_html=True)
+
+    st.info("""
+    **策略说明**：基于均值回归理论，捕捉深度超跌后的技术性反弹机会。
+
+    **核心逻辑**：
+    1. 选择从前高下跌超过40%的股票（120日观察期）
+    2. 成交量萎缩确认（缩量下跌 = 抛压减轻）
+    3. 买入触发：从最低点反弹12.5%
+    4. 卖出触发：从买入点回调8% 或 硬止损-5%
+    """)
+
+    # 扫描功能
+    if params['scan_button']:
+        with st.spinner("🔍 正在扫描全市场..."):
+            # 创建扫描器
+            scanner = OversoldScanner(st.session_state.data_loader)
+            st.session_state.oversold_scanner = scanner
+
+            # 扫描进度条
+            progress_bar = st.progress(0)
+            status_text = st.empty()
+
+            def progress_callback(current, total):
+                progress = current / total
+                progress_bar.progress(progress)
+                status_text.text(f"扫描进度: {current}/{total} ({progress*100:.1f}%)")
+
+            # 执行扫描
+            candidates = scanner.scan_all_stocks(
+                drawdown_threshold=params['drawdown_threshold'],
+                lookback_period=params['lookback_period'],
+                bounce_ratio=params['bounce_ratio'],
+                enable_volume_filter=params['enable_volume_filter'],
+                volume_contraction=params['volume_contraction'],
+                progress_callback=progress_callback
             )
-        
-        if data.empty:
-            st.error(f"❌ 未找到股票 {params['stock_code']} 的数据，请检查代码是否正确")
-            return
-        
-        # 显示数据信息
-        render_data_info(data, params['stock_code'])
-        
-        # 显示价格图表
-        render_price_chart(data)
-        
-        # 运行回测
-        if params['run_button']:
-            if params['strategy_class'] is None:
-                st.error("❌ 请选择或上传策略文件")
-                return
-            
-            with st.spinner("🔄 正在运行回测..."):
-                engine = BacktestEngine(
-                    data=data,
-                    strategy_class=params['strategy_class'],
-                    cash=params['initial_cash'],
-                    commission=params['commission']
+
+            st.session_state.oversold_scan_results = candidates
+
+            if candidates:
+                st.success(f"✅ 扫描完成！找到 {len(candidates)} 只超跌股票")
+            else:
+                st.warning("⚠️ 未找到符合条件的股票")
+
+    # 显示扫描结果
+    if st.session_state.oversold_scan_results:
+        render_scan_results(st.session_state.oversold_scan_results)
+
+        # 回测验证
+        st.markdown("---")
+        st.subheader("🔄 回测验证")
+
+        # 获取可买入的候选
+        buyable = [c for c in st.session_state.oversold_scan_results if c.meet_all_conditions]
+
+        if buyable:
+            selected_code = st.selectbox(
+                "选择股票进行回测验证",
+                options=[c.code for c in buyable],
+                format_func=lambda x: f"{x} - {[c.name for c in buyable if c.code == x][0]}"
+            )
+
+            col1, col2 = st.columns(2)
+            with col1:
+                start_date = st.date_input(
+                    "回测开始日期",
+                    value=datetime.now() - timedelta(days=365),
+                    max_value=datetime.now()
                 )
-                
-                results = engine.run(**params['strategy_params'])
-                
-                st.session_state.backtest_results = results
-                st.session_state.last_engine = engine
-                
-                if results['success']:
-                    st.success("✅ 回测完成！")
-                else:
-                    st.error(f"❌ 回测失败: {results.get('error', '未知错误')}")
-        
-        # 显示回测结果
-        if st.session_state.backtest_results:
-            render_metrics(st.session_state.backtest_results)
-            render_equity_curve(data, st.session_state.backtest_results)
-            render_trades_table(st.session_state.backtest_results)
-            
+            with col2:
+                end_date = st.date_input(
+                    "回测结束日期",
+                    value=datetime.now(),
+                    max_value=datetime.now()
+                )
+
+            if st.button("🚀 运行回测"):
+                run_oversold_backtest(
+                    selected_code,
+                    start_date.strftime('%Y-%m-%d'),
+                    end_date.strftime('%Y-%m-%d'),
+                    params
+                )
+        else:
+            st.info("没有满足所有买入条件的股票，无法回测")
+
+
+def render_scan_results(candidates: list):
+    """渲染扫描结果"""
+    st.subheader("📊 扫描结果")
+
+    # 摘要统计
+    summary = {
+        'total': len(candidates),
+        'buyable': len([c for c in candidates if c.meet_all_conditions]),
+        'watch_only': len([c for c in candidates if c.is_oversold and not c.meet_all_conditions]),
+        'avg_drawdown': sum(c.drawdown_pct for c in candidates) / len(candidates) if candidates else 0,
+    }
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("超跌股票数", summary['total'])
+    with col2:
+        st.metric("可买入", summary['buyable'])
+    with col3:
+        st.metric("观察中", summary['watch_only'])
+    with col4:
+        st.metric("平均跌幅", f"{summary['avg_drawdown']:.1f}%")
+
+    # 分类显示
+    tab1, tab2 = st.tabs(["✅ 可买入", "👀 观察列表"])
+
+    with tab1:
+        buyable = [c for c in candidates if c.meet_all_conditions]
+        if buyable:
+            display_data = [c.to_display_dict() for c in buyable]
+            df = pd.DataFrame(display_data)
+            st.dataframe(df, use_container_width=True)
+        else:
+            st.info("没有满足所有买入条件的股票")
+
+    with tab2:
+        watchlist = [c for c in candidates if c.is_oversold and not c.meet_all_conditions]
+        if watchlist:
+            display_data = [c.to_display_dict() for c in watchlist]
+            df = pd.DataFrame(display_data)
+            st.dataframe(df, use_container_width=True)
+        else:
+            st.info("没有观察中的股票")
+
+    # 导出按钮
+    if st.button("📥 导出结果"):
+        if st.session_state.oversold_scanner:
+            filepath = st.session_state.oversold_scanner.export_results(candidates)
+            if filepath:
+                st.success(f"结果已保存至: {filepath}")
+
+
+def run_oversold_backtest(code: str, start_date: str, end_date: str, params: dict):
+    """运行超跌反弹策略回测"""
+    try:
+        with st.spinner(f"🔄 正在对 {code} 运行回测..."):
+            # 获取数据
+            data = st.session_state.data_loader.get_stock_data(code, start_date, end_date)
+
+            if data.empty:
+                st.error(f"❌ 未找到 {code} 的数据")
+                return
+
+            # 创建回测引擎
+            engine = BacktestEngine(
+                data=data,
+                strategy_class=params['strategy_class'],
+                cash=params['initial_cash'],
+                commission=params['commission']
+            )
+
+            # 运行回测
+            results = engine.run(
+                drawdown_threshold=params['drawdown_threshold'],
+                lookback_period=params['lookback_period'],
+                bounce_ratio=params['bounce_ratio'],
+                pullback_ratio=params['pullback_ratio'],
+                stop_loss_pct=params['stop_loss_pct'],
+                enable_volume_filter=params['enable_volume_filter'],
+                volume_contraction=params['volume_contraction']
+            )
+
+            st.session_state.backtest_results = results
+            st.session_state.last_engine = engine
+
+            if results['success']:
+                st.success("✅ 回测完成！")
+                # 显示结果
+                render_metrics(results)
+                render_equity_curve(data, results)
+                render_decision_history(engine)
+                render_trades_table(results)
+            else:
+                st.error(f"❌ 回测失败: {results.get('error', '未知错误')}")
+
     except Exception as e:
         st.error(f"❌ 发生错误: {e}")
         import traceback
         st.code(traceback.format_exc())
+
+
+def main():
+    """主函数"""
+    init_session_state()
+
+    # 侧边栏选择功能模块
+    st.sidebar.title("📊 功能模块")
+    page = st.sidebar.radio(
+        "选择功能",
+        ["单股票回测", "超跌反弹策略"]
+    )
+
+    if page == "单股票回测":
+        # 原有功能
+        render_header()
+        params = render_sidebar()
+
+        # 加载数据
+        try:
+            with st.spinner("📥 正在加载数据..."):
+                data = st.session_state.data_loader.get_stock_data(
+                    params['stock_code'],
+                    params['start_date'].strftime('%Y-%m-%d'),
+                    params['end_date'].strftime('%Y-%m-%d')
+                )
+
+            if data.empty:
+                st.error(f"❌ 未找到股票 {params['stock_code']} 的数据，请检查代码是否正确")
+                return
+
+            # 显示数据信息
+            render_data_info(data, params['stock_code'])
+
+            # 显示信号面板（V2细粒度）
+            if len(data) >= 20:
+                render_signal_panel(data)
+
+            # 显示价格图表
+            render_price_chart(data)
+
+            # 运行回测
+            if params['run_button']:
+                if params['strategy_class'] is None:
+                    st.error("❌ 请选择或上传策略文件")
+                    return
+
+                with st.spinner("🔄 正在运行回测..."):
+                    engine = BacktestEngine(
+                        data=data,
+                        strategy_class=params['strategy_class'],
+                        cash=params['initial_cash'],
+                        commission=params['commission']
+                    )
+
+                    results = engine.run(**params['strategy_params'])
+
+                    st.session_state.backtest_results = results
+                    st.session_state.last_engine = engine
+
+                    if results['success']:
+                        st.success("✅ 回测完成！")
+                    else:
+                        st.error(f"❌ 回测失败: {results.get('error', '未知错误')}")
+
+            # 显示回测结果
+            if st.session_state.backtest_results:
+                render_metrics(st.session_state.backtest_results)
+                render_equity_curve(data, st.session_state.backtest_results)
+
+                if st.session_state.get('last_engine'):
+                    render_decision_history(st.session_state.last_engine)
+
+                render_trades_table(st.session_state.backtest_results)
+
+        except Exception as e:
+            st.error(f"❌ 发生错误: {e}")
+            import traceback
+            st.code(traceback.format_exc())
+
+    else:  # 超跌反弹策略
+        params = render_oversold_sidebar()
+        render_oversold_page(params)
 
 
 if __name__ == "__main__":
