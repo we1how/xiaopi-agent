@@ -8,6 +8,7 @@
 
 | 日期 | 优先级 | 来源 | 标题/主题 | 关键词 |
 |------|--------|------|-----------|--------|
+| 2026-03-03 | P0 | Arxiv | TradeFM: Trade-flow与市场微观结构基础模型 | 生成式AI, 微观结构, 合成数据 |
 | 2026-03-02 | P1 | Quantpedia | Systematic Allocation in International Equity Regimes | 动量策略, 美欧股配置, SMA过滤 |
 | 2026-03-01 | P0 | Arxiv | 多智能体LLM交易系统中的细粒度任务分解 | Multi-Agent, 技术指标, Sharpe提升 |
 | 2026-02-28 | P1 | Arxiv/GitHub | Dynamic-weight AMMs套利效率 + 主动代理记忆框架 | LVR, DeFi, memU, 记忆系统 |
@@ -18,6 +19,25 @@
 ---
 
 ## 2026年3月
+
+### 2026-03-03 [P0] TradeFM：市场微观结构的基础模型
+
+**主题**：TradeFM: A Generative Foundation Model for Trade-flow and Market Microstructure  
+**来源**：Arxiv (arXiv:2602.23784) - Sood et al.  
+**链接**：<https://arxiv.org/abs/2602.23784>
+
+**核心洞察**：
+1. **跨资产泛化**：通过尺度不变特征和统一token化方案，将异质多模态订单流映射为离散序列，消除资产特定校准
+2. **合成数据生成**：TradeFM生成的rollout能复现金融收益的关键风格化事实（厚尾、波动聚集、无自相关）
+3. **零样本泛化**：在地理分布外（APAC市场）零样本测试仅出现适度困惑度下降
+4. **性能优势**：相比Compound Hawkes基线，分布误差降低2-3倍
+
+**信息差分析**：
+- **国内讨论度**：无 - 该论文3月2日发布，尚未见中文社区讨论
+- **应用场景**：A股Level2数据生成、策略压力测试、基于学习的交易Agent
+- **行动建议**：本周 - 评估TradeFM的A股微观结构数据适配性
+
+---
 
 ### 2026-03-02 [P1] 国际股权动态配置策略
 

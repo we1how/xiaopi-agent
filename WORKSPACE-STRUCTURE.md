@@ -32,8 +32,9 @@
 │   │   ├── SOUL.md
 │   │   ├── LEARNING.md
 │   │   └── GROWTH_PLAN.md
-│   ├── musk-orchestrator/    # 🚀 CEO（我自己）
-│   │   └── SOUL.md
+│   ├── main/                 # 🚀 CEO（MuskOrchestrator）
+│   │   ├── LEARNING.md
+│   │   └── MEMORY.md
 │   └── rigorous-qa/          # 🔍 质检员
 │       └── SOUL.md
 │
@@ -71,7 +72,7 @@
 │   ├── fetch_notion.py
 │   ├── stock-db/             # A股数据库相关脚本
 │   ├── imessage-*.sh         # iMessage 相关脚本
-│   └── xiaopi-*.sh           # 小皮服务脚本
+│   └── orchestrator-*.sh     # CEO服务脚本
 │
 ├── 📈 analysis/              # 分析报告
 │   └── notion-投资记录分析.md
@@ -133,4 +134,4 @@
 
 ---
 
-_第一性原理，永不懈怠，持续进化_ 🚀🐱
+_第一性原理，永不懈怠，冷酷无情，改变世界_ 🚀

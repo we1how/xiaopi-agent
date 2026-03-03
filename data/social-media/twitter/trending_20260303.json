@@ -1,0 +1,46 @@
+{
+  "date": "20260303",
+  "platform": "twitter",
+  "method": "jina_reader",
+  "status": "success",
+  "sources": [
+    "sama",
+    "ylecun",
+    "elonmusk",
+    "naval",
+    "paulg"
+  ],
+  "tweets_count": 6,
+  "tweets": [
+    {
+      "date": "Aug 12, 2025",
+      "content": "Apple is behaving in a manner that makes it impossible for any AI company besides OpenAI to reach #1 in the App Store, which is an unequivocal antitrust violation. xAI will take immediate legal action. Readers added context funny, they never sent me one of these for contributing to democrats... i love openai, and everything i’ve done over the past few days has been in service of keeping this team and its mission together. when i decided to join msft on sun evening, it was clear that was the best path for me and the team. with the new board and w satya’s support, i’m i love the openai team so much it's super fun seeing people love images in chatgpt. but our GPUs are melting. we are going to temporarily introduce some rate limits while we work on making it more efficient. hopefully won't be long! chatgpt free tier will get 3 generations per day soon. watching more carefully recently has really changed my perspective on him (i wish i had done more of my own thinking and definitely fell in the npc trap). i'm not going to agree with him on everything, but i think he will be incredible for the country in many ways! for a long time i said that antisemitism, particularly on the american left, was not as bad as people claimed. i'd like to just state that i was totally wrong. i still don't understand it, really. or know what to do about it. but it is so fucked. if i start going off, the openai board should go after me for the full value of my shares welcome to the world, little guy! he came early and is going to be in the nicu for awhile. he is doing well and it’s really nice to be in a little bubble taking care of him. i have never felt such love.",
+      "username": "sama"
+    },
+    {
+      "date": "Jun 3, 2024",
+      "content": "This is huge: Llama-v2 is open source, with a license that authorizes commercial use! This is going to change the landscape of the LLM market. Llama-v2 is available on Microsoft Azure and will be available on AWS, Hugging Face and other providers Pretrained and fine-tuned Your smartest friends aren't very smart. X is a $44 billion propaganda machine. Yet it attempts to disguise itself as a defender of unfettered free speech, a source of factual information, and a substitute for professional journalism. Anonymous",
+      "username": "ylecun"
+    },
+    {
+      "date": "Jul 19, 2024",
+      "content": "Elon Musk (@elonmusk) paid $44 billion dollars for a social media platform so that he could promote Donald Trump and MAGA. It's one of the most expensive (if not the most expensive) campaign tools for a politician ever deployed. It's a $44 billion dollar propaganda machine. Join xAI if you can stand a boss who: - claims that what you are working on will be solved next year (no pressure). - claims that what you are working on will kill everyone and must be stopped or paused (yay, vacation for 6 months!). - claims to want a \"maximally rigorous pursuit Elon has apparently one genuine technical paper indexed by Google Scholar: \"An Integrated Brain-Machine Interface Platform With Thousands of Channels\" Published in the Journal of Medical Internet Research in 2019. The authors? \"Elon Musk and Neuralink\" I'm sure the scientists I like his cars, his rockets, his solar panels, and his satellite network. I very much dislike his vengeful politics, his conspiracy theories, and his hype. This dude has absolutely no idea WTF he's talking about. The total net worth of my former PhD students alone would make any silvery Wall Street dude turn green with envy. Wall Street Mav",
+      "username": "ylecun"
+    },
+    {
+      "date": "Aug 2, 2024",
+      "content": "The value of a PhD in 2024 is approaching $0.00",
+      "username": "ylecun"
+    },
+    {
+      "date": "Sep 1, 2025",
+      "content": "JUST IN: The world’s leading association of genocide scholars has passed a resolution stating that the legal criteria have been met to establish that Israel is committing genocide in Gaza. The media could not be played. Every picture of JP Morgan published in his lifetime (and thus nearly every picture published since) was heavily retouched. This is what he actually looked like. In Gaza, 10 year old children are making wills. Nour Naim| نُور",
+      "username": "paulg"
+    },
+    {
+      "date": "Oct 2, 2024",
+      "content": "I don't have to tell you what happened to these three boys. You already know. How awful is that? It's remarkable how many people who've never run any kind of company think they know how to run a tech company better than someone who's run Tesla and SpaceX. 65 doctors, nurses, and paramedics told the New York Times what they saw in Gaza. What they saw was a pattern of children being shot in the head. A Palestinian child's life is worth as much as an Israeli child's life.",
+      "username": "paulg"
+    }
+  ]
+}

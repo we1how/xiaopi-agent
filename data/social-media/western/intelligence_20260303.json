@@ -1,0 +1,286 @@
+{
+  "date": "20260303",
+  "collected_at": "2026-03-03T08:30:21.000079",
+  "sources": {
+    "hackernews": {
+      "count": 15,
+      "items": [
+        {
+          "title": "Motorola announces a partnership with GrapheneOS",
+          "url": "https://motorolanews.com/motorola-three-new-b2b-solutions-at-mwc-2026/",
+          "author": "km",
+          "points": 2031,
+          "comments": 725,
+          "created_at": "2026-03-02T06:48:07Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "British Columbia to end time changes, adopt year-round daylight time",
+          "url": "https://www.cbc.ca/news/canada/british-columbia/b-c-adopting-year-round-daylight-time-9.7111657",
+          "author": "ireflect",
+          "points": 352,
+          "comments": 194,
+          "created_at": "2026-03-02T20:30:52Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "The workers behind Meta's smart glasses can see everything",
+          "url": "https://www.svd.se/a/K8nrV4/metas-ai-smart-glasses-and-data-privacy-concerns-workers-say-we-see-everything",
+          "author": "sandbach",
+          "points": 350,
+          "comments": 184,
+          "created_at": "2026-03-02T22:32:35Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "New iPad Air, powered by M4",
+          "url": "https://www.apple.com/newsroom/2026/03/apple-introduces-the-new-ipad-air-powered-by-m4/",
+          "author": "Garbage",
+          "points": 305,
+          "comments": 503,
+          "created_at": "2026-03-02T14:11:23Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Inside the M4 Apple Neural Engine, Part 1: Reverse Engineering",
+          "url": "https://maderix.substack.com/p/inside-the-m4-apple-neural-engine",
+          "author": "zdw",
+          "points": 256,
+          "comments": 62,
+          "created_at": "2026-03-01T17:11:44Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "First in-utero stem cell therapy for fetal spina bifida repair is safe: study",
+          "url": "https://health.ucdavis.edu/news/headlines/first-ever-in-utero-stem-cell-therapy-for-fetal-spina-bifida-repair-is-safe-study-finds/2026/02",
+          "author": "gmays",
+          "points": 239,
+          "comments": 47,
+          "created_at": "2026-03-02T14:54:58Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Welcome (back) to Macintosh",
+          "url": "https://take.surf/2026/03/01/welcome-back-to-macintosh",
+          "author": "Udo_Schmitz",
+          "points": 203,
+          "comments": 116,
+          "created_at": "2026-03-02T21:09:47Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "iPhone 17e",
+          "url": "https://www.apple.com/newsroom/2026/03/apple-introduces-iphone-17e/",
+          "author": "meetpateltech",
+          "points": 177,
+          "comments": 187,
+          "created_at": "2026-03-02T14:03:00Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Ask HN: Who is hiring? (March 2026)",
+          "url": "",
+          "author": "whoishiring",
+          "points": 154,
+          "comments": 207,
+          "created_at": "2026-03-02T16:00:27Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Use the Mikado Method to do safe changes in a complex codebase",
+          "url": "https://understandlegacycode.com/blog/a-process-to-do-safe-changes-in-a-complex-codebase/",
+          "author": "foenix",
+          "points": 150,
+          "comments": 69,
+          "created_at": "2026-02-26T15:03:34Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Show HN: Govbase – Follow a bill from source text to news bias to social posts",
+          "url": "https://govbase.com",
+          "author": "foxfoxx",
+          "points": 145,
+          "comments": 65,
+          "created_at": "2026-03-02T17:08:53Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Parallel coding agents with tmux and Markdown specs",
+          "url": "https://schipper.ai/posts/parallel-coding-agents/",
+          "author": "schipperai",
+          "points": 109,
+          "comments": 83,
+          "created_at": "2026-03-02T14:24:15Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+          "url": "https://www.ntik.me/posts/voice-agent",
+          "author": "nicktikhonov",
+          "points": 105,
+          "comments": 26,
+          "created_at": "2026-03-02T21:23:40Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Show HN: uBlock filter list to blur all Instagram Reels",
+          "url": "https://gist.github.com/shraiwi/009c652da6ce8c99a6e1e0c86fe66886",
+          "author": "shraiwi",
+          "points": 88,
+          "comments": 22,
+          "created_at": "2026-03-02T19:50:32Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Packaging a Gleam app into a single executable",
+          "url": "https://www.dhzdhd.dev/blog/gleam-executable",
+          "author": "todsacerdoti",
+          "points": 80,
+          "comments": 7,
+          "created_at": "2026-03-02T16:20:18Z",
+          "source": "hackernews"
+        }
+      ]
+    },
+    "github": {
+      "count": 10,
+      "items": [
+        {
+          "name": "alibaba/OpenSandbox",
+          "url": "https://github.com/alibaba/OpenSandbox",
+          "description": "OpenSandbox is a general-purpose sandbox platform for AI applications, offering multi-language SDKs,",
+          "source": "github"
+        },
+        {
+          "name": "microsoft/markitdown",
+          "url": "https://github.com/microsoft/markitdown",
+          "description": "Python tool for converting files and office documents to Markdown.",
+          "source": "github"
+        },
+        {
+          "name": "K-Dense-AI/claude-scientific-skills",
+          "url": "https://github.com/K-Dense-AI/claude-scientific-skills",
+          "description": "A set of ready to use Agent Skills for research, science, engineering, analysis, finance and writing",
+          "source": "github"
+        },
+        {
+          "name": "NanmiCoder/MediaCrawler",
+          "url": "https://github.com/NanmiCoder/MediaCrawler",
+          "description": "小红书笔记 | 评论爬虫、抖音视频 | 评论爬虫、快手视频 | 评论爬虫、B 站视频 ｜ 评论爬虫、微博帖子 ｜ 评论爬虫、百度贴吧帖子 ｜ 百度贴吧评论回复爬虫 | 知乎问答文章｜评论爬虫",
+          "source": "github"
+        },
+        {
+          "name": "scrapy/scrapy",
+          "url": "https://github.com/scrapy/scrapy",
+          "description": "Scrapy, a fast high-level web crawling &amp; scraping framework for Python.",
+          "source": "github"
+        },
+        {
+          "name": "public-apis/public-apis",
+          "url": "https://github.com/public-apis/public-apis",
+          "description": "A collective list of free APIs",
+          "source": "github"
+        },
+        {
+          "name": "jamwithai/production-agentic-rag-course",
+          "url": "https://github.com/jamwithai/production-agentic-rag-course",
+          "description": "Trade autonomously on Polymarket using AI Agents",
+          "source": "github"
+        },
+        {
+          "name": "X-PLUG/MobileAgent",
+          "url": "https://github.com/X-PLUG/MobileAgent",
+          "description": "Mobile-Agent: The Powerful GUI Agent Family",
+          "source": "github"
+        },
+        {
+          "name": "TheCraigHewitt/seomachine",
+          "url": "https://github.com/TheCraigHewitt/seomachine",
+          "description": "A specialized Claude Code workspace for creating long-form, SEO-optimized blog content for any busin",
+          "source": "github"
+        },
+        {
+          "name": "khoj-ai/khoj",
+          "url": "https://github.com/khoj-ai/khoj",
+          "description": "Your AI second brain. Self-hostable. Get answers from the web or your docs. Build custom agents, sch",
+          "source": "github"
+        }
+      ]
+    },
+    "arxiv": {
+      "count": 10,
+      "items": [
+        {
+          "title": "DARE-bench: Evaluating Modeling and Instruction Fidelity of LLMs in Data Science",
+          "summary": "The fast-growing demands in using Large Language Models (LLMs) to tackle complex multi-step data science tasks create an emergent need for accurate benchmarking. There are two major gaps in existing b...",
+          "url": "https://arxiv.org/abs/2602.24288v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "Do LLMs Benefit From Their Own Words?",
+          "summary": "Multi-turn interactions with large language models typically retain the assistant's own past responses in the conversation history. In this work, we revisit this design choice by asking whether large ...",
+          "url": "https://arxiv.org/abs/2602.24287v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "CUDA Agent: Large-Scale Agentic RL for High-Performance CUDA Kernel Generation",
+          "summary": "GPU kernel optimization is fundamental to modern deep learning but remains a highly specialized task requiring deep hardware expertise. Despite strong performance in general programming, large languag...",
+          "url": "https://arxiv.org/abs/2602.24286v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "Taming Momentum: Rethinking Optimizer States Through Low-Rank Approximation",
+          "summary": "Modern optimizers like Adam and Muon are central to training large language models, but their reliance on first- and second-order momenta introduces significant memory overhead, which constrains scala...",
+          "url": "https://arxiv.org/abs/2602.24283v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "Memory Caching: RNNs with Growing Memory",
+          "summary": "Transformers have been established as the de-facto backbones for most recent advances in sequence modeling, mainly due to their growing memory capacity that scales with the context length. While plaus...",
+          "url": "https://arxiv.org/abs/2602.24281v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "Resources for Automated Evaluation of Assistive RAG Systems that Help Readers with News Trustworthiness Assessment",
+          "summary": "Many readers today struggle to assess the trustworthiness of online news because reliable reporting coexists with misinformation. The TREC 2025 DRAGUN (Detection, Retrieval, and Augmented Generation f...",
+          "url": "https://arxiv.org/abs/2602.24277v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "A Minimal Agent for Automated Theorem Proving",
+          "summary": "We propose a minimal agentic baseline that enables systematic comparison across different AI-based theorem prover architectures. This design implements the core features shared among state-of-the-art ...",
+          "url": "https://arxiv.org/abs/2602.24273v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "Efficient Discovery of Approximate Causal Abstractions via Neural Mechanism Sparsification",
+          "summary": "Neural networks are hypothesized to implement interpretable causal mechanisms, yet verifying this requires finding a causal abstraction -- a simpler, high-level Structural Causal Model (SCM) faithful ...",
+          "url": "https://arxiv.org/abs/2602.24266v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "FaultXformer: A Transformer-Encoder Based Fault Classification and Location Identification model in PMU-Integrated Active Electrical Distribution System",
+          "summary": "Accurate fault detection and localization in electrical distribution systems is crucial, especially with the increasing integration of distributed energy resources (DERs), which inject greater variabi...",
+          "url": "https://arxiv.org/abs/2602.24254v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        },
+        {
+          "title": "SafeGen-LLM: Enhancing Safety Generalization in Task Planning for Robotic Systems",
+          "summary": "Safety-critical task planning in robotic systems remains challenging: classical planners suffer from poor scalability, Reinforcement Learning (RL)-based methods generalize poorly, and base Large Langu...",
+          "url": "https://arxiv.org/abs/2602.24235v1",
+          "published": "2026-02-27",
+          "source": "arxiv"
+        }
+      ]
+    }
+  }
+}

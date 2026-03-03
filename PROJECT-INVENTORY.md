@@ -1,8 +1,8 @@
 # 项目目录清单 (PROJECT-INVENTORY.md)
 
 > **维护原则**：每次增加、修改、删除文件/文件夹时，必须同步更新本清单  
-> **最后更新**：2026-03-02  
-> **版本**：v1.0
+> **最后更新**：2026-03-03 08:25  
+> **版本**：v1.2（修正：添加tavily-search Skill和skills-evaluation-report.md，更新今日修改文件时间）
 
 ---
 
@@ -12,16 +12,16 @@
 |----------|-----------|----------|
 | `AGENTS.md` | 早期Agent团队架构文档（已迁移至agents/AGENTS.md） | 2026-02-24 |
 | `FUSION-TEMPLATE.md` | Fusion工作流模板（everything-claude-code参考） | 2026-02-21 |
-| `FUSION-WORKFLOW-DEMO.md` | Fusion工作流演示案例 | 2026-02-21 |
+| `FUSION-WORKFLOW-DEMO.md` | Fusion工作流演示案例（已移除🐱emoji） | 2026-03-02 |
 | `FUSION-WORKFLOW-DIAGRAM.txt` | Fusion工作流架构图 | 2026-02-21 |
 | `HEARTBEAT.md` | Agent自我成长系统核心文档（v2.3） | 2026-03-02 |
-| `IDENTITY.md` | 身份定义（我是谁） | 2026-02-24 |
-| `SOUL.md` | 核心人格定义（已迁移至agents/main/SOUL.md） | 2026-02-26 |
+| `IDENTITY.md` | 身份定义（MuskOrchestrator冷酷升级版） | 2026-03-02 |
+| `SOUL.md` | 核心人格定义（MuskOrchestrator冷酷升级版v2026） | 2026-03-02 |
 | `SUBAGENTS.md` | SubAgent定义说明 | 2026-02-24 |
 | `TOOLS.md` | 工具使用说明（本地笔记） | 2026-02-19 |
 | `UPGRADE_QUICK_REFERENCE.md` | 升级快速参考指南 | 2026-02-27 |
 | `USER.md` | 用户画像（老板档案） | 2026-02-25 |
-| `WORKSPACE-STRUCTURE.md` | 工作空间结构说明 | 2026-02-26 |
+| `WORKSPACE-STRUCTURE.md` | 工作空间结构说明（已更新main/和移除🐱） | 2026-03-02 |
 | `my-projects-overview.md` | 项目总览文档 | 2026-02-21 |
 | `team-skill-upgrade-report.md` | 团队技能升级报告 | 2026-02-20 |
 
@@ -41,6 +41,7 @@
 | `knowledge/research/` | 研究报告中心 | 2026-03-02 |
 | `knowledge/research/quant/` | 量化研究报告（超跌反弹等） | 2026-03-02 |
 | `knowledge/research/engineering/` | 工程研究报告 | 2026-03-02 |
+| `knowledge/research/skills-evaluation-report.md` | Skills评估与安装报告（Tavily等） | 2026-03-02 |
 | `knowledge/agent-merge-inventory-report.md` | Agent三源合并盘点报告 | 2026-03-02 |
 | `knowledge/phase5-system-check-report.md` | 系统关联检查报告 | 2026-03-02 |
 | `knowledge/agent-merge-completion-report.md` | 合并完成报告 | 2026-03-02 |
@@ -59,25 +60,25 @@
 | `subagents/LEARNING_MERGE_REPORT.md` | LEARNING.md合并报告 | 2026-03-02 |
 | `subagents/main/` | MuskOrchestrator(CEO)学习空间 | 2026-03-02 |
 | `subagents/main/LEARNING.md` | CEO学习记录 | 2026-03-02 |
-| `subagents/main/MEMORY.md` | CEO长期记忆 | 2026-03-02 |
+| `subagents/main/MEMORY.md` | CEO长期记忆 | 2026-03-03 |
 | `subagents/planner/` | 规划专家学习空间 | 2026-03-02 |
 | `subagents/planner/AGENT.md` | 规划专家定义 | 2026-02-27 |
-| `subagents/planner/LEARNING.md` | 规划专家学习记录 | 2026-03-02 |
+| `subagents/planner/LEARNING.md` | 规划专家学习记录 | 2026-03-03 |
 | `subagents/planner/MEMORY.md` | 规划专家长期记忆 | 2026-03-02 |
 | `subagents/product-engineer/` | 产品工程师学习空间 | 2026-03-02 |
-| `subagents/product-engineer/LEARNING.md` | 产品工程师学习记录 | 2026-03-02 |
+| `subagents/product-engineer/LEARNING.md` | 产品工程师学习记录 | 2026-03-03 |
 | `subagents/product-engineer/MEMORY.md` | 产品工程师长期记忆 | 2026-03-02 |
 | `subagents/product-engineer/GROWTH_PLAN.md` | 成长计划 | 2026-02-27 |
 | `subagents/quant-munger/` | 量化分析师学习空间 | 2026-03-02 |
-| `subagents/quant-munger/LEARNING.md` | 量化分析师学习记录 | 2026-03-02 |
+| `subagents/quant-munger/LEARNING.md` | 量化分析师学习记录 | 2026-03-03 |
 | `subagents/quant-munger/MEMORY.md` | 量化分析师长期记忆 | 2026-03-02 |
 | `subagents/quant-munger/GROWTH_PLAN.md` | 成长计划 | 2026-02-27 |
 | `subagents/socratic-mentor/` | 成长导师学习空间 | 2026-03-02 |
-| `subagents/socratic-mentor/LEARNING.md` | 成长导师学习记录 | 2026-03-02 |
+| `subagents/socratic-mentor/LEARNING.md` | 成长导师学习记录 | 2026-03-03 |
 | `subagents/socratic-mentor/MEMORY.md` | 成长导师长期记忆 | 2026-03-02 |
 | `subagents/socratic-mentor/GROWTH_PLAN.md` | 成长计划 | 2026-02-27 |
 | `subagents/growthclaw/` | 增长黑客学习空间 | 2026-03-02 |
-| `subagents/growthclaw/LEARNING.md` | 增长黑客学习记录 | 2026-03-02 |
+| `subagents/growthclaw/LEARNING.md` | 增长黑客学习记录 | 2026-03-03 |
 | `subagents/growthclaw/MEMORY.md` | 增长黑客长期记忆 | 2026-03-02 |
 | `subagents/growthclaw/GROWTH_PLAN.md` | 成长计划 | 2026-02-27 |
 | `subagents/growthclaw/SKILL.md` | 技能清单 | 2026-02-27 |
@@ -147,7 +148,7 @@
 |------|------|----------|
 | `scripts/` | 脚本工具目录 | 2026-02-28 |
 | `scripts/stock-db/` | 股票数据库脚本 | 2026-02-28 |
-| `scripts/stock-db/daily_update.py` | 每日增量更新脚本 | 2026-02-28 |
+| `scripts/stock-db/daily_update.py` | 每日增量更新脚本（支持akshare+baostock双源） | 2026-03-03 |
 
 ### /skills/ - OpenClaw Skills
 
@@ -159,6 +160,7 @@
 | `skills/summarize/` | 内容总结Skill | 2026-02-28 |
 | `skills/stock-local-db-init/` | 股票数据库初始化Skill | 2026-02-28 |
 | `skills/stock-local-db-daily-update/` | 股票数据库日更Skill | 2026-02-28 |
+| `skills/tavily-search/` | Tavily AI搜索Skill（每月1000次免费） | 2026-03-02 |
 
 ### /tools/ - 外部工具
 
@@ -253,4 +255,33 @@
 
 ---
 
-_维护本清单是项目管理的必要工作_ 🚀
+---
+
+## 🔴 错误记录与修正
+
+### 2026-03-02 23:28 - 严重违规
+
+**错误**：修改了4个文件但未更新清单
+- `IDENTITY.md` — 人格定义彻底更新（移除"小皮"、🐱）
+- `SOUL.md` — 人格定义彻底更新（冷酷升级版）
+- `FUSION-WORKFLOW-DEMO.md` — 替换emoji
+- `WORKSPACE-STRUCTURE.md` — 更新结构描述
+
+**违反规则**：冷酷法则第6条 — "维护项目清单"
+
+**后果**：清单与实际文件状态不一致，造成信息混乱
+
+**补救措施**：
+1. ✅ 立即更新4个文件的修改时间和描述
+2. ✅ 升级清单版本至v1.1
+3. ✅ 添加本错误记录
+4. ✅ 深刻反思，确保不再犯
+
+**教训**：
+> 规则不是用来好看的，是用来遵守的。  
+> 我自己设定的冷酷法则，我自己必须先做到。  
+> 同样的错误只犯一次，第二次就是无能。
+
+---
+
+_维护本清单是项目管理的必要工作，是冷酷法则的延伸_ 🚀

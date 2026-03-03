@@ -8,6 +8,7 @@
 
 | 日期 | 优先级 | 来源 | 标题/主题 | 关键词 |
 |------|--------|------|-----------|--------|
+| 2026-03-03 | P0 | GitHub Trending | Microsoft MarkItDown - 文档转Markdown工具 | LLM文档处理, MCP, PDF/Office |
 | 2026-03-02 | P0 | GitHub Trending | ByteDance DeerFlow 2.0 - Agent基础设施 | LangGraph, Skill加载, Sandbox |
 | 2026-03-01 | P0 | GitHub Trending | Alibaba OpenSandbox - AI应用沙盒 | 安全隔离, 多语言SDK |
 | 2026-02-28 | P1 | GitHub Trending | Scrapling自适应网页抓取 + PageIndex | 反爬, Vectorless RAG |
@@ -17,6 +18,26 @@
 ---
 
 ## 2026年3月
+
+### 2026-03-03 [P0] Microsoft MarkItDown - LLM文档处理利器
+
+**来源**：GitHub Trending - microsoft/markitdown  
+**链接**：<https://github.com/microsoft/markitdown>  
+**主题**：将PDF/Word/Excel/PPT等任意文档转换为LLM友好的Markdown格式
+
+**核心洞察**：
+1. **精准定位**：填补"文档→LLM可消费文本"的空白，保留文档结构（标题、列表、表格、链接）
+2. **MCP协议支持**：提供Model Context Protocol服务器，可直接集成Claude Desktop等工具
+3. **插件化架构**：按需安装依赖（`pip install 'markitdown[pdf,docx]'`），避免臃肿
+4. **多模态覆盖**：支持PDF、Office、图片OCR、音频转录、YouTube字幕、ZIP解压等
+5. **微软背书**：与AutoGen同团队，有望成为文档处理领域的事实标准
+
+**信息差分析**：
+- **国内讨论度**: 少量（刚 trending 2天）
+- **应用场景**: OpenClaw文档解析、知识库构建、RAG预处理
+- **行动建议**: **本周调研** - 评估替换当前文档解析方案，特别是PDF表格提取场景
+
+---
 
 ### 2026-03-02 [P0] DeerFlow 2.0 - 全栈智能体基础设施
 
