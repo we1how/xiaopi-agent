@@ -8,6 +8,7 @@
 
 | 日期 | 优先级 | 来源 | 标题/主题 | 关键词 |
 |------|--------|------|-----------|--------|
+| 2026-03-04 | P0 | Arxiv | Deep Learning金融时间序列大规模基准测试 | 深度学习, 夏普优化, VSN+LSTM |
 | 2026-03-03 | P0 | Arxiv | TradeFM: Trade-flow与市场微观结构基础模型 | 生成式AI, 微观结构, 合成数据 |
 | 2026-03-02 | P1 | Quantpedia | Systematic Allocation in International Equity Regimes | 动量策略, 美欧股配置, SMA过滤 |
 | 2026-03-01 | P0 | Arxiv | 多智能体LLM交易系统中的细粒度任务分解 | Multi-Agent, 技术指标, Sharpe提升 |
@@ -19,6 +20,36 @@
 ---
 
 ## 2026年3月
+
+### 2026-03-04 [P0] Deep Learning金融时间序列大规模基准测试
+
+**主题**：Deep Learning for Financial Time Series: A Large-Scale Benchmark of Risk-Adjusted Performance  
+**来源**：Arxiv (arXiv:2603.01820) - Saly-Kaufmann et al. (牛津大学 & Oxford-Man Institute)  
+**链接**：<https://arxiv.org/abs/2603.01820>
+
+**核心洞察**：
+1. **VSN+LSTM夺冠**：Variable Selection Networks + LSTM混合模型获得最高整体夏普比率，特征选择+时序建模的组合优于纯Transformer
+2. **架构对比结论**：专为丰富时间表示设计的模型（xLSTM、PatchTST）始终优于线性基准和通用深度学习模型
+3. **xLSTM成本优势**：xLSTM展现最大的盈亏平衡交易成本缓冲，对交易摩擦的稳健性最强
+4. **数据覆盖**：15年(2010-2025)日度期货数据，跨商品、股指、债券、外汇多资产类别
+
+**信息差分析**：
+- **国内讨论度**：极低 - 论文3月2日发布，尚未见中文量化社区讨论
+- **与Stock Platform关联度**：极高 ⭐⭐⭐⭐⭐
+  - 端到端夏普比率优化框架可直接借鉴
+  - 统计显著性、下行风险、交易成本分析方法论
+  - VSN特征选择机制可整合进现有策略
+- **可落地技术**：VSN+LSTM架构、PatchTST时间序列分块、xLSTM指数门控机制
+
+**主动提案**：
+- **发现**：论文对比了10+种现代深度学习架构在金融时间序列上的表现，发现"复杂不一定更好"
+- **建议**：Stock Platform Phase 2可引入VSN+LSTM作为核心预测模型，替代单一LSTM
+- **行动**：
+  1. 本周：复现VSN+LSTM基准测试，评估A股日度数据适配性
+  2. 本月：对比VSN+LSTM与现有策略的信号质量和计算效率
+  3. 待验证：xLSTM的长记忆优势是否能捕捉A股的长期动量效应
+
+---
 
 ### 2026-03-03 [P0] TradeFM：市场微观结构的基础模型
 

@@ -8,6 +8,7 @@
 
 | 日期 | 优先级 | 来源 | 标题/主题 | 关键词 |
 |------|--------|------|-----------|--------|
+| 2026-03-04 | P0 | GitHub Trending | UltraRAG - 首个MCP架构RAG框架 | 低代码, MCP协议, RAG编排 |
 | 2026-03-03 | P0 | GitHub Trending | Microsoft MarkItDown - 文档转Markdown工具 | LLM文档处理, MCP, PDF/Office |
 | 2026-03-02 | P0 | GitHub Trending | ByteDance DeerFlow 2.0 - Agent基础设施 | LangGraph, Skill加载, Sandbox |
 | 2026-03-01 | P0 | GitHub Trending | Alibaba OpenSandbox - AI应用沙盒 | 安全隔离, 多语言SDK |
@@ -18,6 +19,26 @@
 ---
 
 ## 2026年3月
+
+### 2026-03-04 [P0] UltraRAG - 首个MCP架构RAG开发框架
+
+**来源**：GitHub Trending - OpenBMB/UltraRAG  
+**链接**：<https://github.com/OpenBMB/UltraRAG>  
+**主题**：基于Model Context Protocol的低代码RAG管道编排框架
+
+**核心洞察**：
+1. **MCP架构落地RAG**：UltraRAG是第一个将Retriever、Generator等核心组件标准化为独立MCP Server的框架，通过MCP Client实现条件分支、循环等复杂控制流编排
+2. **YAML驱动低代码**：几十行YAML即可实现迭代式RAG、多路召回等复杂逻辑，大幅降低实验门槛
+3. **可视化RAG IDE**：提供Pipeline Builder支持"画布搭建"与"代码编辑"双向实时同步，真正实现RAG开发的可视化调试
+4. **开箱即用的评估体系**：内置标准化评测流程和主流研究benchmark，解决RAG领域"效果难复现"痛点
+5. **DeepResearch Pipeline内置**：一键部署多步检索整合生成万字调研报告的能力
+
+**信息差分析**：
+- **国内讨论度**: 极低（刚 trending 1天）
+- **应用场景**: OpenClaw技能编排、RAG工作流设计、MCP生态扩展
+- **行动建议**: **本周调研** - 评估YAML编排语法和MCP Server注册机制，考虑迁移到OpenClaw技能层
+
+---
 
 ### 2026-03-03 [P0] Microsoft MarkItDown - LLM文档处理利器
 
