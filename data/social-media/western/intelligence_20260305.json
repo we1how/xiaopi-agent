@@ -1,0 +1,286 @@
+{
+  "date": "20260305",
+  "collected_at": "2026-03-05T08:37:37.198199",
+  "sources": {
+    "hackernews": {
+      "count": 15,
+      "items": [
+        {
+          "title": "MacBook Neo",
+          "url": "https://www.apple.com/newsroom/2026/03/say-hello-to-macbook-neo/",
+          "author": "dm",
+          "points": 1470,
+          "comments": 1821,
+          "created_at": "2026-03-04T14:16:41Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Something is afoot in the land of Qwen",
+          "url": "https://simonwillison.net/2026/Mar/4/qwen/",
+          "author": "simonw",
+          "points": 483,
+          "comments": 229,
+          "created_at": "2026-03-04T15:55:34Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "An interactive map of Flock Cams",
+          "url": "https://deflock.org/map#map=5/37.125286/-96.284180",
+          "author": "anjel",
+          "points": 483,
+          "comments": 186,
+          "created_at": "2026-03-04T18:50:45Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Qwen3.5 Fine-Tuning Guide – Unsloth Documentation",
+          "url": "https://unsloth.ai/docs/models/qwen3.5/fine-tune",
+          "author": "bilsbie",
+          "points": 257,
+          "comments": 63,
+          "created_at": "2026-03-04T12:04:31Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Making Firefox's right-click not suck with about:config",
+          "url": "https://joshua.hu/firefox-making-right-click-not-suck",
+          "author": "mmsc",
+          "points": 243,
+          "comments": 170,
+          "created_at": "2026-03-04T18:12:39Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Building a new Flash",
+          "url": "https://bill.newgrounds.com/news/post/1607118",
+          "author": "TechPlasma",
+          "points": 236,
+          "comments": 54,
+          "created_at": "2026-03-04T20:16:03Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "“It turns out” (2010)",
+          "url": "https://jsomers.net/blog/it-turns-out",
+          "author": "Munksgaard",
+          "points": 230,
+          "comments": 74,
+          "created_at": "2026-03-04T14:52:46Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Libre Solar – Open Hardware for Renewable Energy",
+          "url": "https://libre.solar",
+          "author": "evolve2k",
+          "points": 202,
+          "comments": 60,
+          "created_at": "2026-03-01T09:01:05Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Glaze by Raycast",
+          "url": "https://www.glazeapp.com/",
+          "author": "romac",
+          "points": 187,
+          "comments": 114,
+          "created_at": "2026-03-04T13:21:31Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Does that use a lot of energy?",
+          "url": "https://hannahritchie.github.io/energy-use-comparisons/",
+          "author": "speckx",
+          "points": 173,
+          "comments": 145,
+          "created_at": "2026-03-04T20:30:16Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Moss is a pixel canvas where every brush is a tiny program",
+          "url": "https://www.moss.town/",
+          "author": "smusamashah",
+          "points": 162,
+          "comments": 20,
+          "created_at": "2026-03-04T10:21:13Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "NanoGPT Slowrun: Language Modeling with Limited Data, Infinite Compute",
+          "url": "https://qlabs.sh/slowrun",
+          "author": "sdpmas",
+          "points": 111,
+          "comments": 21,
+          "created_at": "2026-03-04T17:56:04Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "MyFirst Kids Watch Hacked. Access to Camera and Microphone",
+          "url": "https://www.kth.se/en/om/nyheter/centrala-nyheter/kth-studenten-hackade-klocka-for-barn-1.1461249",
+          "author": "jidoka",
+          "points": 105,
+          "comments": 30,
+          "created_at": "2026-03-04T13:04:53Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Data Has Weight but Only on SSDs",
+          "url": "https://cubiclenate.com/2026/03/04/data-has-weight-but-only-on-ssds-blathering/",
+          "author": "LorenDB",
+          "points": 61,
+          "comments": 40,
+          "created_at": "2026-03-04T18:46:21Z",
+          "source": "hackernews"
+        },
+        {
+          "title": "Raspberry Pi Pico as AM Radio Transmitter",
+          "url": "https://www.pesfandiar.com/blog/2026/02/28/pico-am-radio-transmitter",
+          "author": "pesfandiar",
+          "points": 61,
+          "comments": 28,
+          "created_at": "2026-03-01T00:26:43Z",
+          "source": "hackernews"
+        }
+      ]
+    },
+    "github": {
+      "count": 10,
+      "items": [
+        {
+          "name": "K-Dense-AI/claude-scientific-skills",
+          "url": "https://github.com/K-Dense-AI/claude-scientific-skills",
+          "description": "A set of ready to use Agent Skills for research, science, engineering, analysis, finance and writing",
+          "source": "github"
+        },
+        {
+          "name": "agentscope-ai/ReMe",
+          "url": "https://github.com/agentscope-ai/ReMe",
+          "description": "ReMe: Memory Management Kit for Agents - Remember Me, Refine Me.",
+          "source": "github"
+        },
+        {
+          "name": "alibaba/OpenSandbox",
+          "url": "https://github.com/alibaba/OpenSandbox",
+          "description": "OpenSandbox is a general-purpose sandbox platform for AI applications, offering multi-language SDKs,",
+          "source": "github"
+        },
+        {
+          "name": "FujiwaraChoki/MoneyPrinterV2",
+          "url": "https://github.com/FujiwaraChoki/MoneyPrinterV2",
+          "description": "Automate the process of making money online.",
+          "source": "github"
+        },
+        {
+          "name": "agentscope-ai/agentscope",
+          "url": "https://github.com/agentscope-ai/agentscope",
+          "description": "Build and run agents you can see, understand and trust.",
+          "source": "github"
+        },
+        {
+          "name": "unslothai/unsloth",
+          "url": "https://github.com/unslothai/unsloth",
+          "description": "Fine-tuning &amp; Reinforcement Learning for LLMs. 🦥 Train OpenAI gpt-oss, DeepSeek, Qwen, Llama, Ge",
+          "source": "github"
+        },
+        {
+          "name": "TheCraigHewitt/seomachine",
+          "url": "https://github.com/TheCraigHewitt/seomachine",
+          "description": "A specialized Claude Code workspace for creating long-form, SEO-optimized blog content for any busin",
+          "source": "github"
+        },
+        {
+          "name": "LMCache/LMCache",
+          "url": "https://github.com/LMCache/LMCache",
+          "description": "Supercharge Your LLM with the Fastest KV Cache Layer",
+          "source": "github"
+        },
+        {
+          "name": "Aider-AI/aider",
+          "url": "https://github.com/Aider-AI/aider",
+          "description": "aider is AI pair programming in your terminal",
+          "source": "github"
+        },
+        {
+          "name": "NVIDIA-NeMo/Megatron-Bridge",
+          "url": "https://github.com/NVIDIA-NeMo/Megatron-Bridge",
+          "description": "Training library for Megatron-based models with bidirectional Hugging Face conversion capability",
+          "source": "github"
+        }
+      ]
+    },
+    "arxiv": {
+      "count": 10,
+      "items": [
+        {
+          "title": "How to Peel with a Knife: Aligning Fine-Grained Manipulation with Human Preference",
+          "summary": "Many essential manipulation tasks - such as food preparation, surgery, and craftsmanship - remain intractable for autonomous robots. These tasks are characterized not only by contact-rich, force-sensi...",
+          "url": "https://arxiv.org/abs/2603.03280v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "Tether: Autonomous Functional Play with Correspondence-Driven Trajectory Warping",
+          "summary": "The ability to conduct and learn from interaction and experience is a central challenge in robotics, offering a scalable alternative to labor-intensive human demonstrations. However, realizing such \"p...",
+          "url": "https://arxiv.org/abs/2603.03278v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "Inherited Goal Drift: Contextual Pressure Can Undermine Agentic Goals",
+          "summary": "The accelerating adoption of language models (LMs) as agents for deployment in long-context tasks motivates a thorough understanding of goal drift: agents' tendency to deviate from an original objecti...",
+          "url": "https://arxiv.org/abs/2603.03258v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "Valet: A Standardized Testbed of Traditional Imperfect-Information Card Games",
+          "summary": "AI algorithms for imperfect-information games are typically compared using performance metrics on individual games, making it difficult to assess robustness across game choices. Card games are a natur...",
+          "url": "https://arxiv.org/abs/2603.03252v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "Density-Guided Response Optimization: Community-Grounded Alignment via Implicit Acceptance Signals",
+          "summary": "Language models deployed in online communities must adapt to norms that vary across social, cultural, and domain-specific contexts. Prior alignment approaches rely on explicit preference supervision o...",
+          "url": "https://arxiv.org/abs/2603.03242v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "UniG2U-Bench: Do Unified Models Advance Multimodal Understanding?",
+          "summary": "Unified multimodal models have recently demonstrated strong generative capabilities, yet whether and when generation improves understanding remains unclear. Existing benchmarks lack a systematic explo...",
+          "url": "https://arxiv.org/abs/2603.03241v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "AI-for-Science Low-code Platform with Bayesian Adversarial Multi-Agent Framework",
+          "summary": "Large Language Models (LLMs) demonstrate potentials for automating scientific code generation but face challenges in reliability, error propagation in multi-agent workflows, and evaluation in domains ...",
+          "url": "https://arxiv.org/abs/2603.03233v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "SynthCharge: An Electric Vehicle Routing Instance Generator with Feasibility Screening to Enable Learning-Based Optimization and Benchmarking",
+          "summary": "The electric vehicle routing problem with time windows (EVRPTW) extends the classical VRPTW by introducing battery capacity constraints and charging station decisions. Existing benchmark datasets are ...",
+          "url": "https://arxiv.org/abs/2603.03230v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "Stabilized Adaptive Loss and Residual-Based Collocation for Physics-Informed Neural Networks",
+          "summary": "Physics-Informed Neural Networks (PINNs) have been recognized as a mesh-free alternative to solve partial differential equations where physics information is incorporated. However, in dealing with pro...",
+          "url": "https://arxiv.org/abs/2603.03224v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        },
+        {
+          "title": "NeuroSkill(tm): Proactive Real-Time Agentic System Capable of Modeling Human State of Mind",
+          "summary": "Real-time proactive agentic system, capable of modeling Human State of Mind, using foundation EXG model and text embeddings model, running fully offline on the edge. Unlike all previously known system...",
+          "url": "https://arxiv.org/abs/2603.03212v1",
+          "published": "2026-03-03",
+          "source": "arxiv"
+        }
+      ]
+    }
+  }
+}

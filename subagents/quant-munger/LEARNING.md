@@ -8,6 +8,7 @@
 
 | 日期 | 优先级 | 来源 | 标题/主题 | 关键词 |
 |------|--------|------|-----------|--------|
+| 2026-03-05 | P0 | Arxiv/World Bank | Range-Based Volatility Estimators | OHLC波动率, Yang-Zhang, 市场压力 |
 | 2026-03-04 | P0 | Arxiv | Deep Learning金融时间序列大规模基准测试 | 深度学习, 夏普优化, VSN+LSTM |
 | 2026-03-03 | P0 | Arxiv | TradeFM: Trade-flow与市场微观结构基础模型 | 生成式AI, 微观结构, 合成数据 |
 | 2026-03-02 | P1 | Quantpedia | Systematic Allocation in International Equity Regimes | 动量策略, 美欧股配置, SMA过滤 |
@@ -20,6 +21,37 @@
 ---
 
 ## 2026年3月
+
+### 2026-03-05 [P0] Range-Based Volatility Estimators for Market Stress
+
+**主题**：Range-Based Volatility Estimators for Monitoring Market Stress  
+**Arxiv ID**：2603.02898  
+**来源**：World Bank / 世界银行发展经济学部  
+**链接**：<https://arxiv.org/abs/2603.02898>
+
+**核心洞察**：
+1. **四种OHLC波动率估计器**：Parkinson、Garman-Klass、Rogers-Satchell、Yang-Zhang，利用日内高低点信息比传统收盘价波动率估计效率提升5-14倍
+2. **波动率 vs 动量指标优势**：当供需同时受冲击（对称冲击）或价格快速反转时，RSI/MACD可能失效，但波动率仍能捕捉市场压力信号
+3. **Yang-Zhang最优**：论文实证表明Yang-Zhang估计器在响应性和降噪之间取得最佳平衡
+
+**信息差分析**：
+- **国内讨论度**：极低 - A股量化社区较少系统性使用OHLC波动率估计器
+- **可立即应用性**：极高 - 仅需OHLC数据，Python实现简单
+- **策略增强潜力**：中-高 - 可用于市场压力预警、仓位管理、止损优化
+
+**A股应用建议**：
+- 使用Yang-Zhang波动率监测大盘/个股压力
+- 阈值规则：波动率 > 滚动95%分位数 → 减仓信号
+- 结合成交额萎缩确认流动性风险
+
+**交付成果**：
+- ✅ `skills/volatility_estimators.py` 可复用Python实现（四种估计器+压力检测）
+
+**下一步**：
+- 在沪深300/中证500上回测波动率预警效果
+- 构建"波动率+成交量"复合压力指标
+
+---
 
 ### 2026-03-04 [P0] Deep Learning金融时间序列大规模基准测试
 

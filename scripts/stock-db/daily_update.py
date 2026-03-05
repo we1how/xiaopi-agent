@@ -327,8 +327,13 @@ class DailyUpdater:
         
         try:
             # 转换代码格式: 600000 -> sh.600000
-            if code.startswith('6'):
+            # 上海: 6(主板), 688(科创), 689(科创)
+            # 深圳: 0(主板), 3(创业), 2(中小板已合并)
+            # 北交所: 8, 4
+            if code.startswith(('6', '688', '689')):
                 bs_code = f"sh.{code}"
+            elif code.startswith(('8', '4')):
+                bs_code = f"bj.{code}"
             else:
                 bs_code = f"sz.{code}"
             
@@ -370,7 +375,7 @@ class DailyUpdater:
                     'pctChg': 'pct_chg',
                 })
                 # 转换数值类型
-                for col in ['open', 'high', 'low', 'close', 'vol', 'amount', 'turnover_rate', 'pct_chg']:
+                for col in ['open', 'high', 'low', 'close', 'pre_close', 'vol', 'amount', 'turnover_rate', 'pct_chg']:
                     if col in df.columns:
                         df[col] = pd.to_numeric(df[col], errors='coerce')
                 return df

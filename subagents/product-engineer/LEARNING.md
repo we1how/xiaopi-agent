@@ -8,6 +8,7 @@
 
 | 日期 | 优先级 | 来源 | 标题/主题 | 关键词 |
 |------|--------|------|-----------|--------|
+| 2026-03-05 | P0 | Vercel Blog/GitHub | Agent Security Boundaries + OpenSandbox | 安全架构, 沙盒隔离, Level 3 |
 | 2026-03-04 | P0 | GitHub Trending | UltraRAG - 首个MCP架构RAG框架 | 低代码, MCP协议, RAG编排 |
 | 2026-03-03 | P0 | GitHub Trending | Microsoft MarkItDown - 文档转Markdown工具 | LLM文档处理, MCP, PDF/Office |
 | 2026-03-02 | P0 | GitHub Trending | ByteDance DeerFlow 2.0 - Agent基础设施 | LangGraph, Skill加载, Sandbox |
@@ -19,6 +20,37 @@
 ---
 
 ## 2026年3月
+
+### 2026-03-05 [P0] Security Boundaries in Agentic Architectures
+
+**主题**：Security boundaries in agentic architectures + Alibaba OpenSandbox  
+**来源**：Vercel Blog + GitHub (Alibaba/OpenSandbox)  
+**链接**：<https://vercel.com/blog/security-boundaries-in-agentic-architectures>
+
+**核心洞察**：
+1. **Agent安全架构四层边界**：Agent Harness / Secrets / 生成代码 / 文件系统。当前主流工具（Claude Code/Cursor）默认"零边界"，生成代码可直接访问所有凭据，存在严重Prompt Injection风险
+2. **安全架构演进路径**：
+   - Level 1: 零边界（现状）
+   - Level 2: Secret Injection Proxy（代理注入凭据，防泄露但无法阻止运行时滥用）
+   - Level 3: 独立计算分离（Agent与生成代码运行在不同VM/沙盒）← 推荐
+3. **Alibaba OpenSandbox**：恰好实现Level 3架构的开源方案，支持多语言SDK、Docker/K8s运行时，专门面向Coding Agents、GUI Agents、AI代码执行场景
+
+**信息差分析**：
+- **国内讨论度**：极低 - Agent沙盒安全在国内尚未成为主流话题
+- **技术组合价值**：Vercel架构理论 + Alibaba开源实现 = 完整可落地的技术栈
+- **紧迫性**：中 - 安全加固，非阻塞但重要
+
+**主动提案**：
+1. **评估OpenSandbox集成** — 是否作为我们Agent的代码执行沙盒环境？
+2. **建立技术壁垒** — 国内Agent安全关注度低，抢先布局形成能力优势
+3. **输出技术内容** — 可输出技术文章/内部分享
+
+**下一步**：
+- 本周内完成OpenSandbox技术调研
+- 评估与当前OpenClaw执行层的集成可行性
+- 决策是否引入作为安全加固措施
+
+---
 
 ### 2026-03-04 [P0] UltraRAG - 首个MCP架构RAG开发框架
 

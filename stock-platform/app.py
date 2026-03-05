@@ -607,93 +607,237 @@ def render_oversold_sidebar():
     """渲染超跌反弹策略的侧边栏"""
     st.sidebar.title("⚙️ 参数设置")
 
-    # 策略参数
+    # ========== 快捷预设 ==========
+    st.sidebar.header("🎯 快速预设")
+
+    preset = st.sidebar.selectbox(
+        "选择参数组合",
+        ["自定义", "保守型 (低波动)", "标准型 (平衡)", "激进型 (高频率)"],
+        help="快速应用预设参数组合，选择后可继续微调"
+    )
+
+    # 预设参数
+    if preset == "保守型 (低波动)":
+        default_drawdown = 50
+        default_lookback = 180
+        default_bounce = 20
+        default_pullback = 5
+        default_stop = 3
+        default_volume = 60
+    elif preset == "激进型 (高频率)":
+        default_drawdown = 25
+        default_lookback = 60
+        default_bounce = 8
+        default_pullback = 12
+        default_stop = 8
+        default_volume = 85
+    else:  # 标准型或自定义
+        default_drawdown = 40
+        default_lookback = 120
+        default_bounce = 12.5
+        default_pullback = 8
+        default_stop = 5
+        default_volume = 70
+
+    # 使用session_state保存参数值，实现输入框和滑块同步
+    if 'oversold_params' not in st.session_state:
+        st.session_state.oversold_params = {
+            'drawdown': default_drawdown,
+            'lookback': default_lookback,
+            'bounce': default_bounce,
+            'pullback': default_pullback,
+            'stop': default_stop,
+            'volume': default_volume,
+        }
+
+    # 更新默认值
+    if preset != "自定义":
+        st.session_state.oversold_params.update({
+            'drawdown': default_drawdown,
+            'lookback': default_lookback,
+            'bounce': default_bounce,
+            'pullback': default_pullback,
+            'stop': default_stop,
+            'volume': default_volume,
+        })
+
+    st.sidebar.divider()
+
+    # ========== 超跌参数 ==========
     st.sidebar.header("📉 超跌参数")
 
-    drawdown_threshold = st.sidebar.slider(
-        "跌幅阈值",
-        min_value=0.30,
-        max_value=0.60,
-        value=0.40,
-        step=0.05,
-        format="%.0f%%",
-        help="从前高下跌的幅度阈值"
-    )
+    # 跌幅阈值
+    col1, col2 = st.sidebar.columns([1, 2])
+    with col1:
+        drawdown_input = st.number_input(
+            "跌幅(%)",
+            min_value=10.0,
+            max_value=80.0,
+            value=float(st.session_state.oversold_params['drawdown']),
+            step=1.0,
+            help="从前高下跌多少才认为是超跌。10%=轻度回调, 40%=深度调整, 80%=极端情况",
+            key="drawdown_input"
+        )
+    with col2:
+        drawdown_slider = st.slider(
+            "跌幅阈值",
+            min_value=10,
+            max_value=80,
+            value=int(drawdown_input),
+            step=1,
+            label_visibility="collapsed",
+            help="从前高下跌多少才认为是超跌",
+            key="drawdown_slider"
+        )
+    drawdown_threshold = drawdown_input / 100
 
-    lookback_period = st.sidebar.selectbox(
-        "观察周期",
-        options=[90, 120, 150, 180],
-        index=1,
-        help="计算跌幅的时间窗口"
-    )
+    # 观察周期
+    col1, col2 = st.sidebar.columns([1, 2])
+    with col1:
+        lookback_input = st.number_input(
+            "周期(天)",
+            min_value=20,
+            max_value=365,
+            value=int(st.session_state.oversold_params['lookback']),
+            step=10,
+            help="计算跌幅的时间窗口。60日=季度, 120日=半年, 250日=年线",
+            key="lookback_input"
+        )
+    with col2:
+        lookback_slider = st.slider(
+            "观察周期",
+            min_value=20,
+            max_value=365,
+            value=int(lookback_input),
+            step=10,
+            label_visibility="collapsed",
+            help="计算跌幅的时间窗口",
+            key="lookback_slider"
+        )
+    lookback_period = int(lookback_input)
 
+    st.sidebar.divider()
+
+    # ========== 反弹参数 ==========
     st.sidebar.header("📈 反弹参数")
 
-    bounce_ratio = st.sidebar.slider(
-        "买入反弹比例",
-        min_value=0.10,
-        max_value=0.20,
-        value=0.125,
-        step=0.025,
-        format="%.1f%%",
-        help="从最低点反弹的比例（y/8=12.5%）"
-    )
+    # 买入反弹比例
+    col1, col2 = st.sidebar.columns([1, 2])
+    with col1:
+        bounce_input = st.number_input(
+            "买入(%)",
+            min_value=1.0,
+            max_value=50.0,
+            value=float(st.session_state.oversold_params['bounce']),
+            step=0.5,
+            help="从最低点反弹多少触发买入。5%=短线抢反弹, 12.5%=稳健入场, 30%=趋势确认",
+            key="bounce_input"
+        )
+    with col2:
+        bounce_slider = st.slider(
+            "买入反弹",
+            min_value=1.0,
+            max_value=50.0,
+            value=bounce_input,
+            step=0.5,
+            label_visibility="collapsed",
+            help="从最低点反弹多少触发买入",
+            key="bounce_slider"
+        )
+    bounce_ratio = bounce_input / 100
 
-    pullback_ratio = st.sidebar.slider(
-        "卖出回调比例",
-        min_value=0.05,
-        max_value=0.12,
-        value=0.08,
-        step=0.01,
-        format="%.0f%%",
-        help="从买入点回调的比例（y/12=8%）"
-    )
+    # 卖出回调比例
+    col1, col2 = st.sidebar.columns([1, 2])
+    with col1:
+        pullback_input = st.number_input(
+            "卖出(%)",
+            min_value=1.0,
+            max_value=30.0,
+            value=float(st.session_state.oversold_params['pullback']),
+            step=0.5,
+            help="从买入点回调多少触发卖出。3%=严格止盈, 8%=平衡策略, 20%=承受较大回撤",
+            key="pullback_input"
+        )
+    with col2:
+        pullback_slider = st.slider(
+            "卖出回调",
+            min_value=1.0,
+            max_value=30.0,
+            value=pullback_input,
+            step=0.5,
+            label_visibility="collapsed",
+            help="从买入点回调多少触发卖出",
+            key="pullback_slider"
+        )
+    pullback_ratio = pullback_input / 100
 
+    st.sidebar.divider()
+
+    # ========== 风控参数 ==========
     st.sidebar.header("🛑 风控参数")
 
-    stop_loss_pct = st.sidebar.slider(
-        "硬止损比例",
-        min_value=0.03,
-        max_value=0.08,
-        value=0.05,
-        step=0.01,
-        format="%.0f%%",
-        help="跌破前低的止损比例"
-    )
+    # 硬止损比例
+    col1, col2 = st.sidebar.columns([1, 2])
+    with col1:
+        stop_input = st.number_input(
+            "止损(%)",
+            min_value=1.0,
+            max_value=20.0,
+            value=float(st.session_state.oversold_params['stop']),
+            step=0.5,
+            help="跌破前低多少强制止损。2%=超短保护, 5%=常规止损, 15%=宽松风控",
+            key="stop_input"
+        )
+    with col2:
+        stop_slider = st.slider(
+            "硬止损",
+            min_value=1.0,
+            max_value=20.0,
+            value=stop_input,
+            step=0.5,
+            label_visibility="collapsed",
+            help="跌破前低多少强制止损",
+            key="stop_slider"
+        )
+    stop_loss_pct = stop_input / 100
 
+    # 成交量过滤
     enable_volume_filter = st.sidebar.checkbox(
         "启用成交量过滤",
         value=True,
         help="超跌股通常伴随成交量萎缩"
     )
 
-    volume_contraction = st.sidebar.slider(
-        "成交量萎缩阈值",
-        min_value=0.50,
-        max_value=0.90,
-        value=0.70,
-        step=0.05,
-        format="%.0f%%",
-        help="20日均量/60日均量的阈值",
-        disabled=not enable_volume_filter
-    )
+    # 成交量萎缩阈值
+    col1, col2 = st.sidebar.columns([1, 2])
+    with col1:
+        volume_input = st.number_input(
+            "量比(%)",
+            min_value=20.0,
+            max_value=100.0,
+            value=float(st.session_state.oversold_params['volume']),
+            step=5.0,
+            help="20日均量/60日均量的阈值。50%=严重缩量, 70%=明显缩量, 90%=轻微缩量",
+            key="volume_input",
+            disabled=not enable_volume_filter
+        )
+    with col2:
+        volume_slider = st.slider(
+            "成交量比",
+            min_value=20,
+            max_value=100,
+            value=int(volume_input),
+            step=5,
+            label_visibility="collapsed",
+            help="20日均量/60日均量的阈值",
+            key="volume_slider",
+            disabled=not enable_volume_filter
+        )
+    volume_contraction = volume_input / 100
 
-    # 策略风格选择
-    st.sidebar.header("🎯 策略风格")
+    st.sidebar.divider()
 
-    strategy_style = st.sidebar.radio(
-        "选择风格",
-        ["标准版", "保守版", "激进版"]
-    )
-
-    if strategy_style == "标准版":
-        strategy_class = OversoldBounceStrategy
-    elif strategy_style == "保守版":
-        strategy_class = OversoldBounceConservative
-    else:
-        strategy_class = OversoldBounceAggressive
-
-    # 回测设置
+    # ========== 回测设置 ==========
     st.sidebar.header("💰 回测设置")
 
     initial_cash = st.sidebar.number_input(
@@ -704,18 +848,53 @@ def render_oversold_sidebar():
         step=10000
     )
 
-    commission = st.sidebar.slider(
-        "手续费率",
-        min_value=0.0,
-        max_value=0.01,
-        value=0.001,
-        step=0.0001,
-        format="%.4f"
+    # 手续费率使用百分比输入更直观
+    col1, col2 = st.sidebar.columns([2, 1])
+    with col1:
+        commission_pct = st.number_input(
+            "手续费率(%)",
+            min_value=0.0,
+            max_value=0.5,
+            value=0.1,
+            step=0.01,
+            format="%.2f",
+            help="单边交易成本（佣金+印花税+滑点）。0.05%=低成本, 0.1%=标准成本, 0.3%=较高成本"
+        )
+    with col2:
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.caption(f"= {commission_pct/100:.4f}")
+    commission = commission_pct / 100
+
+    # 策略风格
+    st.sidebar.divider()
+    st.sidebar.header("🎨 策略风格")
+
+    strategy_style = st.sidebar.radio(
+        "选择风格",
+        ["标准版", "保守版", "激进版"],
+        help="标准版=平衡参数, 保守版=更严格条件更高胜率, 激进版=更宽松条件更高频率"
     )
 
+    if strategy_style == "标准版":
+        strategy_class = OversoldBounceStrategy
+    elif strategy_style == "保守版":
+        strategy_class = OversoldBounceConservative
+    else:
+        strategy_class = OversoldBounceAggressive
+
     # 扫描按钮
-    st.sidebar.markdown("---")
-    scan_button = st.sidebar.button("🔍 开始扫描", use_container_width=True)
+    st.sidebar.divider()
+    scan_button = st.sidebar.button("🔍 开始扫描", use_container_width=True, type="primary")
+
+    # 更新session_state
+    st.session_state.oversold_params.update({
+        'drawdown': drawdown_input,
+        'lookback': lookback_period,
+        'bounce': bounce_input,
+        'pullback': pullback_input,
+        'stop': stop_input,
+        'volume': volume_input,
+    })
 
     return {
         'drawdown_threshold': drawdown_threshold,
@@ -729,7 +908,8 @@ def render_oversold_sidebar():
         'strategy_style': strategy_style,
         'initial_cash': initial_cash,
         'commission': commission,
-        'scan_button': scan_button
+        'scan_button': scan_button,
+        'preset': preset
     }
 
 
