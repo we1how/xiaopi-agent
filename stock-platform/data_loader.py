@@ -112,42 +112,57 @@ class StockDataLoader:
     
     def get_available_stocks(self, limit: int = 1000) -> pd.DataFrame:
         """
-        获取可用股票列表
-        
+        获取可用股票列表（去重，只包含当前上市股票）
+
         Returns:
             DataFrame 包含股票代码和名称
         """
         # 尝试从 stock_basic 表获取
         parquet_path = self.parquet_path / "stock_basic.parquet"
-        
+
         if parquet_path.exists():
             query = f"""
-                SELECT 
-                    symbol as code,
+                SELECT DISTINCT
+                    CASE
+                        WHEN symbol LIKE '%.SZ' OR symbol LIKE '%.SH' OR symbol LIKE '%.BJ'
+                        THEN SUBSTRING(symbol, 1, LENGTH(symbol) - 3)
+                        ELSE symbol
+                    END as code,
                     name,
                     industry,
                     market
                 FROM stock_basic
                 WHERE list_status = 'L'
+                  AND (market = '主板' OR market = '创业板' OR market = '科创板' OR market = '北交所')
                 ORDER BY total_mv DESC
                 LIMIT {limit}
             """
             try:
-                return self.conn.execute(query).fetchdf()
-            except:
-                pass
-        
-        # 从 daily 表获取股票列表
+                df = self.conn.execute(query).fetchdf()
+                print(f"[数据加载] 从stock_basic获取到 {len(df)} 只上市股票")
+                return df
+            except Exception as e:
+                print(f"[数据加载] 从stock_basic获取失败: {e}")
+
+        # 备选：从daily表获取（去重，只取最近30天有交易的股票）
         query = f"""
-            SELECT DISTINCT ts_code as code
+            SELECT DISTINCT
+                CASE
+                    WHEN ts_code LIKE '%.SZ' OR ts_code LIKE '%.SH' OR ts_code LIKE '%.BJ'
+                    THEN SUBSTRING(ts_code, 1, LENGTH(ts_code) - 3)
+                    ELSE ts_code
+                END as code
             FROM daily
+            WHERE trade_date >= (SELECT MAX(trade_date) FROM daily) - INTERVAL '30 days'
             LIMIT {limit}
         """
-        
+
         try:
-            return self.conn.execute(query).fetchdf()
+            df = self.conn.execute(query).fetchdf()
+            print(f"[数据加载] 从daily表获取到 {len(df)} 只活跃股票")
+            return df
         except Exception as e:
-            print(f"Error getting stock list: {e}")
+            print(f"[数据加载] Error getting stock list: {e}")
             return pd.DataFrame(columns=['code'])
     
     def get_stock_info(self, code: str) -> Optional[pd.Series]:

@@ -79,17 +79,19 @@ class OversoldBounceStrategy(BaseStrategyV2):
 
         # 为可视化计算指标
         close = pd.Series(self.data.Close)
+        high = pd.Series(self.data.High)
+        low = pd.Series(self.data.Low)
         volume = pd.Series(self.data.Volume)
 
-        # 最高价（观察期内）
+        # 最高价（观察期内，使用盘中最高价）
         self.high_lookback = self.I(
-            lambda: close.rolling(self.lookback_period).max(),
+            lambda: high.rolling(self.lookback_period).max(),
             name=f'High({self.lookback_period})'
         )
 
-        # 最低价（观察期内）
+        # 最低价（观察期内，使用盘中最低价）
         self.low_lookback = self.I(
-            lambda: close.rolling(self.lookback_period).min(),
+            lambda: low.rolling(self.lookback_period).min(),
             name=f'Low({self.lookback_period})'
         )
 
@@ -139,12 +141,14 @@ class OversoldBounceStrategy(BaseStrategyV2):
         # 获取当前数据
         data_slice = self._get_data_slice()
         close = data_slice['Close']
+        high = data_slice['High']
+        low = data_slice['Low']
         volume = data_slice['Volume']
         current_price = close.iloc[-1]
 
-        # 计算观察期内的高低点
-        high_lookback = close.rolling(self.lookback_period).max().iloc[-1]
-        low_lookback = close.rolling(self.lookback_period).min().iloc[-1]
+        # 计算观察期内的高低点（使用盘中最高/最低价）
+        high_lookback = high.rolling(self.lookback_period).max().iloc[-1]
+        low_lookback = low.rolling(self.lookback_period).min().iloc[-1]
 
         # 当前跌幅
         drawdown = (current_price - high_lookback) / high_lookback if high_lookback != 0 else 0
@@ -389,12 +393,14 @@ def check_oversold_condition(
         return False, {'error': '数据不足'}
 
     close = data['Close']
+    high = data['High']
+    low = data['Low']
     volume = data['Volume']
     current_price = close.iloc[-1]
 
-    # 计算观察期内的高低点
-    high_lookback = close.rolling(lookback_period).max().iloc[-1]
-    low_lookback = close.rolling(lookback_period).min().iloc[-1]
+    # 计算观察期内的高低点（使用盘中最高/最低价）
+    high_lookback = high.rolling(lookback_period).max().iloc[-1]
+    low_lookback = low.rolling(lookback_period).min().iloc[-1]
 
     # 当前跌幅
     drawdown = (current_price - high_lookback) / high_lookback if high_lookback != 0 else 0
