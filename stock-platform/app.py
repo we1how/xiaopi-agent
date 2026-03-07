@@ -26,6 +26,7 @@ from strategies import (
 )
 from signals import SignalExtractor, TechnicalSignals
 from scanners import OversoldScanner
+from finance import render_finance_page
 
 # 页面配置
 st.set_page_config(
@@ -1267,11 +1268,40 @@ def main():
     """主函数"""
     init_session_state()
 
+    # 检查并启动 RSSHub 服务
+    from utils import check_and_start_rsshub
+
+    # 初始化 RSSHub 状态显示
+    if 'rsshub_status' not in st.session_state:
+        st.session_state.rsshub_status = None
+
+    # 检测中状态
+    if st.session_state.rsshub_status is None:
+        with st.spinner("🔄 正在检测 RSSHub 服务..."):
+            success, message, status_info = check_and_start_rsshub()
+            st.session_state.rsshub_status = {
+                'success': success,
+                'message': message,
+                'info': status_info
+            }
+
     # 侧边栏选择功能模块
     st.sidebar.title("📊 功能模块")
+
+    # 显示 RSSHub 状态
+    rsshub_status = st.session_state.rsshub_status
+    if rsshub_status:
+        if rsshub_status['success']:
+            if rsshub_status['info'].get('started'):
+                st.sidebar.success(f"✅ RSSHub 服务已启动 ({rsshub_status['message']})")
+            else:
+                st.sidebar.info(f"✅ RSSHub 服务已就绪")
+        else:
+            st.sidebar.warning(f"⚠️ RSSHub: {rsshub_status['message']}")
+            st.sidebar.caption("Finance 功能需要 RSSHub，请运行: `docker run -d -p 1200:1200 diygod/rsshub:latest`")
     page = st.sidebar.radio(
         "选择功能",
-        ["单股票回测", "超跌反弹策略"]
+        ["单股票回测", "超跌反弹策略", "Finance"]
     )
 
     if page == "单股票回测":
@@ -1341,9 +1371,11 @@ def main():
             import traceback
             st.code(traceback.format_exc())
 
-    else:  # 超跌反弹策略
+    elif page == "超跌反弹策略":
         params = render_oversold_sidebar()
         render_oversold_page(params)
+    else:  # Finance
+        render_finance_page()
 
 
 def analyze_candidates_performance(candidates, data_loader, params):

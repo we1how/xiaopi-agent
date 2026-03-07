@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  rsshub:
+    image: diygod/rsshub:latest
+    container_name: rsshub
+    ports:
+      - "1200:1200"
+    environment:
+      # 缓存设置
+      CACHE_TYPE: memory
+      CACHE_EXPIRE: 300
+      # 请求重试
+      REQUEST_RETRY: 3
+      REQUEST_TIMEOUT: 30000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 可选：Redis 缓存（如需启用，取消注释）
+  # redis:
+  #   image: redis:alpine
+  #   container_name: rsshub-redis
+  #   restart: unless-stopped
+  #   volumes:
+  #     - redis-data:/data
+
+# volumes:
+#   redis-data:

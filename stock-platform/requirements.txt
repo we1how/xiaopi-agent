@@ -4,3 +4,7 @@ pandas>=2.0.0
 numpy>=1.24.0
 plotly>=5.18.0
 duckdb>=0.9.0
+feedparser>=6.0.10
+beautifulsoup4>=4.12.0
+pyperclip>=1.8.2
+openai>=1.0.0

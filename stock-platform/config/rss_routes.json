@@ -1,0 +1,41 @@
+{
+  "routes": [
+    {
+      "id": "cls_depth",
+      "name": "财联社深度",
+      "url": "http://localhost:1200/cls/depth/1000",
+      "category": "finance",
+      "enabled": true,
+      "parser": "cls",
+      "description": "财联社深度报道"
+    },
+    {
+      "id": "cls_telegraph",
+      "name": "财联社电报",
+      "url": "http://localhost:1200/cls/telegraph",
+      "category": "finance",
+      "enabled": true,
+      "parser": "cls",
+      "description": "财联社7x24小时电报"
+    },
+    {
+      "id": "wallstreetcn_hot",
+      "name": "华尔街见闻",
+      "url": "http://localhost:1200/wallstreetcn/hot",
+      "category": "finance",
+      "enabled": true,
+      "parser": "generic",
+      "description": "华尔街见闻热门文章"
+    },
+    {
+      "id": "bigquant_collections",
+      "name": "BigQuant 专题",
+      "url": "http://localhost:1200/bigquant/collections",
+      "category": "finance",
+      "enabled": true,
+      "parser": "generic",
+      "description": "BigQuant AI量化知识库专题报告"
+    }
+  ],
+  "last_updated": "2026-03-07T22:50:00.000000+00:00"
+}

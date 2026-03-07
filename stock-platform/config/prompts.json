@@ -1,0 +1,50 @@
+{
+  "templates": [
+    {
+      "id": "stock_impact",
+      "name": "股票影响分析",
+      "category": "analysis",
+      "description": "分析新闻对A股股票的影响程度，输出结构化JSON格式",
+      "use_case": "适用于个股相关的财经新闻，如公司公告、行业政策、业绩报告等",
+      "example_output": "{\n  \"summary\": \"某公司发布Q3财报，净利润同比增长50%\",\n  \"analysis\": [\n    {\n      \"stock\": \"某公司(600XXX.SH)\",\n      \"impact\": \"强烈利好\",\n      \"reason\": \"业绩超预期，主营业务增长强劲\"\n    }\n  ]\n}",
+      "content": "请分析以下新闻内容，完成以下任务：\n1. 将新闻内容总结成一句话；\n2. 判断分析该新闻对国内A股市场哪些具体股票的利好程度判断。从利好到利空依次分为「强烈利好」、「利好」、「中性」、「利空」、「强烈利空」5个等级。另外，如果不确定或者缺乏足够判断信息，或者新闻和要判断的股票关系不大，则跳过；\n3. 可以有多个股票分析,请用字典格式输出，在字典以外不要输出任何内容：\n{\n    \"summary\": \"新闻的一句话总结(如果没有则用新闻标题代替)\",\n    \"analysis\": [\n        {\n            \"stock\": \"A股股票名称（股票代码.后缀）\",\n            \"impact\": \"强烈利好/利好/中性/利空/强烈利空\",\n            \"reason\": \"影响理由\"\n        }\n    ]\n}；\n\n4. 以下是要分析的新闻内容：\n{news_content}"
+    },
+    {
+      "id": "summary_only",
+      "name": "新闻摘要",
+      "category": "analysis",
+      "description": "仅生成新闻摘要，提炼核心信息",
+      "use_case": "适用于快速浏览新闻要点，不需要深度分析的场景",
+      "example_output": "该新闻主要报道了...（2-3句话概括核心内容）",
+      "content": "请对以下新闻内容进行简要总结，提炼核心信息点：\n\n{news_content}\n\n请用2-3句话概括主要观点。"
+    },
+    {
+      "id": "market_sentiment",
+      "name": "市场情绪分析",
+      "category": "analysis",
+      "description": "分析新闻反映的市场情绪和投资氛围",
+      "use_case": "适用于宏观新闻、政策解读、市场热点等需要判断市场情绪的场景",
+      "example_output": "1. 整体情绪：乐观\n2. 主要关注点：政策利好、资金流入\n3. 潜在影响：短期或维持上涨趋势",
+      "content": "请分析以下新闻所反映的市场情绪和投资氛围：\n\n{news_content}\n\n请从以下几个维度分析：\n1. 整体情绪（乐观/中性/谨慎/悲观）\n2. 主要关注点\n3. 对市场的潜在影响"
+    },
+    {
+      "id": "industry_impact",
+      "name": "行业影响分析",
+      "category": "analysis",
+      "description": "分析新闻对A股相关行业的影响",
+      "use_case": "适用于行业政策、产业链变动、技术突破等影响多个行业的场景",
+      "example_output": "1. 直接受影响行业：新能源、半导体\n2. 间接受益行业：设备制造、原材料\n3. 受损行业：传统能源",
+      "content": "请分析以下新闻对A股相关行业的影响：\n\n{news_content}\n\n请输出：\n1. 直接受影响的行业\n2. 间接受影响的行业\n3. 受益/受损的行业分析"
+    },
+    {
+      "id": "custom",
+      "name": "自定义分析",
+      "category": "custom",
+      "description": "用户自定义prompt，自由输入分析要求",
+      "use_case": "适用于特定分析需求，可以自定义分析角度和输出格式",
+      "example_output": "（根据用户自定义prompt输出）",
+      "content": "{news_content}"
+    }
+  ],
+  "last_updated": "2026-03-07T00:00:00"
+}
